@@ -15,15 +15,15 @@
                 <tr>
                     <td width="400px">{{ task.name }}</td>
                     <td>{{ task.to_date }}: {{ task.time }}</td>
-                    <td><a href="/delete_task/{{ task.id }}">Edit</a>
-                        <a href="/delete_task/{{ task.id }}">Delete</a></td>
+                    <td><a href="/delete_task/{{ task.id }}">Edit   </a>
+                        <a href="/delete_task/{{ task.id }}">Delete   </a></td>
                 </tr>        {% endfor %}
 
             </tbody>
         </table>
     </div>
 
-    <span class="span">
+    <div class="sticky">
 
         <div class="submit_form">
             <form method="POST">
@@ -33,5 +33,5 @@
             </form>
         </div>
 
-    </span>
+    </div>
 {% endblock %}
