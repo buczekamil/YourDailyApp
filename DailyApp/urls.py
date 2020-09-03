@@ -23,5 +23,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', TemplateView.as_view(template_name='index.html')),
     path('base/', views.ToDoView.as_view(), name='todo'),
+    path('task/<int:pk>', views.TaskUpdateView.as_view(), name='update_task'),
 
 ]

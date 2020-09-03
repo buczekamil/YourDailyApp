@@ -10802,22 +10802,21 @@ form .row:first-child .floating-label-form-group {
 
 
 .submit_form {
-
     text-align: center;
-    padding: 3%;
-    background: blue;
+    padding: 6%;
+    background: lightskyblue;
     border-radius: 25px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4),
     0 6px 20px 0 rgba(0, 0, 0, 0.36);
 }
 
-.sticky {
-    width: 200px;
-    padding-left: 20px;
-    padding-right: 5px;
-    position: -webkit-sticky;
-    position: fixed;
-    bottom: 10px;
-    right: 0;
+/*.sticky {*/
+/*    width: 200px;*/
+/*    padding-left: 200px;*/
+/*    padding-right: 5px;*/
+/*    position: -webkit-sticky;*/
+/*    position: fixed;*/
+/*    bottom: 10px;*/
+/*    right: 0;*/
 
-}
+/*}*/
