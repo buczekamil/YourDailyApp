@@ -1,4 +1,4 @@
-from bootstrap_modal_forms.generic import BSModalUpdateView
+from bootstrap_modal_forms.generic import BSModalUpdateView, BSModalCreateView
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import View
@@ -27,4 +27,11 @@ class TaskUpdateView(BSModalUpdateView):
     template_name = 'update_task.html'
     form_class = TaskModelForm
     success_message = 'Success: Task was updated.'
+    success_url = reverse_lazy('todo')
+
+
+class TaskCreateView(BSModalCreateView):
+    template_name = 'create_task.html'
+    form_class = TaskModelForm
+    success_message = 'Success: Book was created.'
     success_url = reverse_lazy('todo')

@@ -17,7 +17,7 @@ class ToDoForm(forms.ModelForm):
         fields = "name", "to_date", "time"
         widgets = {'to_date': DateInput(),
                    'time': TimeInput(),
-                   'name': forms.Textarea(attrs={'rows': 4, 'cols': 16})}
+                   'name': forms.Textarea(attrs={'rows': 1, 'cols': 50})}
         labels = {
             "name": "Task",
             "to_date": "Date",
