@@ -10,15 +10,7 @@
     </div>
 
     <p></p>
-    <div class="text-center">
-    <h2 class="page-section-heading text-secondary" align="right"> ToDo list </h2>
-    <div class="divider-custom">
-        <div class="divider-custom-line"></div>
-        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-        <div class="divider-custom-line"></div>
-    </div>
-    <div class="row justify-content-center">
-    </div>
+
 
     <form method="post">
         {% csrf_token %}
@@ -39,7 +31,15 @@
                 <button type="submit"  class="btn btn-primary" style="margin-left: 2%; margin-bottom: 10px" > Add task</button></div>
     </form>
 
-
+    <div class="text-center">
+    <h2 class="page-section-heading text-secondary" align="right"> ToDo list </h2>
+    <div class="divider-custom">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+        <div class="divider-custom-line"></div>
+    </div>
+    <div class="row justify-content-center">
+    </div>
 
     <div>
         <table id="tasks_table" class="table table-striped">
@@ -59,6 +59,9 @@
                                 data-form-url="{% url 'update_task' task.id %}">
                             <span class="fa fa-pencil"></span>
                         </button>
+                        <button type="button" id="delete-task" class="bs-modal btn btn-sm btn-danger" data-form-url="{% url 'delete_task' task.id %}">
+                      <span class="fa fa-trash"></span>
+      </button>
                     </td>
                 </tr>
             {% endfor %}

@@ -1,4 +1,4 @@
-from bootstrap_modal_forms.generic import BSModalUpdateView, BSModalCreateView
+from bootstrap_modal_forms.generic import BSModalUpdateView, BSModalCreateView, BSModalDeleteView
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import View
@@ -8,7 +8,7 @@ from to_do_list.models import Task
 
 class ToDoView(View):
     def get(self, request):
-        tasks = Task.objects.all().order_by('to_date', 'time')
+        tasks = Task.objects.all().order_by('to_date', 'time').filter(if_done=False)
         form = ToDoForm
         return render(request, 'to_do_list.html', {"tasks": tasks, "form": form})
 
@@ -30,8 +30,8 @@ class TaskUpdateView(BSModalUpdateView):
     success_url = reverse_lazy('todo')
 
 
-class TaskCreateView(BSModalCreateView):
-    template_name = 'create_task.html'
-    form_class = TaskModelForm
-    success_message = 'Success: Book was created.'
+class TaskDeleteView(BSModalDeleteView):
+    model = Task
+    template_name = 'delete_task.html'
+    success_message = 'Success: Task was deleted.'
     success_url = reverse_lazy('todo')

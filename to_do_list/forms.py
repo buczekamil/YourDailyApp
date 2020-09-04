@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from bootstrap_modal_forms.forms import BSModalModelForm
 from django import forms
 from .models import Task
@@ -10,8 +12,8 @@ class DateInput(forms.DateInput):
 class TimeInput(forms.TimeInput):
     input_type = 'time'
 
-
 class ToDoForm(forms.ModelForm):
+
     class Meta:
         model = Task
         fields = "name", "to_date", "time"
@@ -24,7 +26,14 @@ class ToDoForm(forms.ModelForm):
             "time": "Time"
         }
 
+
 class TaskModelForm(BSModalModelForm):
     class Meta:
         model = Task
-        fields = ['name', 'to_date', 'time']
+        fields = ['name', 'to_date', 'time', 'if_done']
+        labels = {
+            "name": "Task",
+            "to_date": "Date",
+            "time": "Time",
+            "if_done": "Done : "
+        }
