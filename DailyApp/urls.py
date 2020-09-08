@@ -22,15 +22,14 @@ from news_aggregator import views as news
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', TemplateView.as_view(template_name='index.html')),
+    path('', TemplateView.as_view(template_name='index.html'), name='home'),
     path('todo/', views.ToDoView.as_view(), name='todo'),
     path('task/<int:pk>', views.TaskUpdateView.as_view(), name='update_task'),
     path('delete/<int:pk>', views.TaskDeleteView.as_view(), name='delete_task'),
-    path('news/uk/', news.NewsUK.as_view()),
-    path('news/usa/', news.NewsUSA.as_view()),
-    path('news/usa/', news.NewsUSA.as_view()),
-    path('news/pl/business/', news.NewsPLBusiness.as_view()),
-    path('news/pl/tech/', news.NewsPLTech.as_view()),
-    path('news/pl/sci/', news.NewsPLSci.as_view()),
+    path('news/uk/', news.NewsUK.as_view(), name="uk_news"),
+    path('news/usa/', news.NewsUSA.as_view(), name="usa_news"),
+    path('news/pl/business/', news.NewsPLBusiness.as_view(), name="pl_news_business"),
+    path('news/pl/tech/', news.NewsPLTech.as_view(), name="pl_news_tech"),
+    path('news/pl/sci/', news.NewsPLSci.as_view(), name="pl_news_sci"),
 
 ]
