@@ -1,12 +1,26 @@
 {% extends 'base.html' %}
 {% block content %}
+<body style="background-color:#212529;">
 
-<div class="container">
-    {% for n in news_UK.articles %}
-        {{n.title}}
-
-
-
+<div class="row row-cols-1 row-cols-md-3">
+{% for news in news_api.articles %}
+  <div class="col mb-4">
+    <div class="card">
+        <a href="{{ news.url }}">
+      <img src="{{ news.urlToImage }}" class="card-img-top" alt="..."></a>
+      <div class="card-body">
+        <h5 class="card-title">{{news.title}}</h5>
+        <p class="card-text">{{news.description}}</p>
+      </div>
+    </div>
+  </div>
     {% endfor %}
+
+  </div>
+</body>
+
+</div>
+
+
 
 {% endblock %}

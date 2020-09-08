@@ -26,6 +26,11 @@ urlpatterns = [
     path('todo/', views.ToDoView.as_view(), name='todo'),
     path('task/<int:pk>', views.TaskUpdateView.as_view(), name='update_task'),
     path('delete/<int:pk>', views.TaskDeleteView.as_view(), name='delete_task'),
-    path('news/', news.News_aggregator.as_view(), name='news_aggregator')
+    path('news/uk/', news.NewsUK.as_view()),
+    path('news/usa/', news.NewsUSA.as_view()),
+    path('news/usa/', news.NewsUSA.as_view()),
+    path('news/pl/business/', news.NewsPLBusiness.as_view()),
+    path('news/pl/tech/', news.NewsPLTech.as_view()),
+    path('news/pl/sci/', news.NewsPLSci.as_view()),
 
 ]
