@@ -18,6 +18,7 @@ from django.urls import path
 from django.views.generic import TemplateView
 
 from to_do_list import views
+from news_aggregator import views as news
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,5 +26,6 @@ urlpatterns = [
     path('todo/', views.ToDoView.as_view(), name='todo'),
     path('task/<int:pk>', views.TaskUpdateView.as_view(), name='update_task'),
     path('delete/<int:pk>', views.TaskDeleteView.as_view(), name='delete_task'),
+    path('news/', news.News_aggregator.as_view(), name='news_aggregator')
 
 ]
