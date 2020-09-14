@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'bootstrap_modal_forms',
     'widget_tweaks',
     'news_aggregator',
+    'events',
 
 ]
 
@@ -83,7 +84,7 @@ WSGI_APPLICATION = 'DailyApp.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'DailyApp',
+        'NAME': 'Daily',
         'HOST': 'localhost',
         'USER': 'postgres',
         'PASSWORD': 'yuliop'

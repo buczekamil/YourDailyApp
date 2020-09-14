@@ -19,7 +19,7 @@ class ToDoView(View):
             deadline = form.cleaned_data['to_date']
             time = form.cleaned_data['time']
             task = Task.objects.create(name=name, to_date=deadline, time=time)
-            return redirect('/base/')
+            return redirect('/')
 
 
 class TaskUpdateView(BSModalUpdateView):
@@ -35,3 +35,5 @@ class TaskDeleteView(BSModalDeleteView):
     template_name = 'delete_task.html'
     success_message = 'Success: Task was deleted.'
     success_url = reverse_lazy('todo')
+
+

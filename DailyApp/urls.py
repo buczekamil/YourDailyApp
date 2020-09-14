@@ -19,6 +19,8 @@ from django.views.generic import TemplateView
 
 from to_do_list import views
 from news_aggregator import views as news
+from events import views as events
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -31,5 +33,6 @@ urlpatterns = [
     path('news/pl/business/', news.NewsPLBusiness.as_view(), name="pl_news_business"),
     path('news/pl/tech/', news.NewsPLTech.as_view(), name="pl_news_tech"),
     path('news/pl/sci/', news.NewsPLSci.as_view(), name="pl_news_sci"),
+    path('calendar/', events.CalendarView.as_view(), name='calendar'),
 
 ]
