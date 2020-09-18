@@ -9,7 +9,7 @@ from events import views as cal
 
 urlpatterns = [
     path('aadminn/', admin.site.urls),
-    path('', TemplateView.as_view(template_name='index.html'), name='home'),
+    path('', news.index, name='home'),
 
     path('todo/', views.ToDoView.as_view(), name='todo'),
     path('task/<int:pk>', views.TaskUpdateView.as_view(), name='update_task'),

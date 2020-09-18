@@ -2528,7 +2528,7 @@ fieldset:disabled a.btn {
 .btn-primary {
     color: #fff;
     background-color: lightskyblue;
-    border-color:deepskyblue;
+    border-color: deepskyblue;
 }
 
 .btn-primary:hover {
@@ -2565,13 +2565,15 @@ fieldset:disabled a.btn {
     background-color: #79def3;
     border-color: #79def3;
 }
-.btn-third{
+
+.btn-third {
     color: white;
-  font-weight: bold;
+    font-weight: bold;
     font-size: 18px;
     background-color: #79def3;
     border-color: #79def3;
 }
+
 .btn-secondary:hover {
     color: black;
     background-color: #56d5f0;
@@ -10627,6 +10629,7 @@ a.text-dark:hover, a.text-dark:focus {
 .masthead .masthead-heading {
     font-size: 2.75rem;
     line-height: 2.75rem;
+    color: white;
 }
 
 .masthead .masthead-subheading {
@@ -10818,51 +10821,75 @@ form .row:first-child .floating-label-form-group {
 }
 
 .calendar {
-  width: 90%;
-  margin: auto;
-  font-size: 13px;
+    width: 90%;
+    margin: auto;
+    font-size: 13px;
 }
 
 .calendar tr, .calendar td {
-  border: 1px solid black;
+    border: 1px solid black;
 }
 
 .calendar th {
-  padding: 10px;
-  text-align: center;
-  font-size: 18px;
+    padding: 10px;
+    text-align: center;
+    font-size: 18px;
 }
 
 .calendar td {
-  width: 200px;
-  height: 150px;
-  padding: 20px 0px 0px 5px;
+    width: 200px;
+    height: 150px;
+    padding: 20px 0px 0px 5px;
 }
 
 .month {
-  font-size: 25px;
+    font-size: 25px;
 }
 
 .date {
-  font-size: 16px;
+    font-size: 16px;
 }
 
 ul {
-  height: 80%;
-  padding: 0px 5px 0px 20px;
+    height: 80%;
+    padding: 0px 5px 0px 20px;
     font-size: 18px;
     color: black;
 }
 
 a {
-  color: #17a2b8;
+    color: #17a2b8;
 }
 
 .left {
-  float: left;
+    float: left;
 }
 
 .right {
-  float: right;
+    float: right;
 
+}
+
+#leftbox {
+    float: left;
+    height: 100px;
+    width: 25%;
+}
+
+#middlebox {
+    float: left;
+    margin-left: 25%
+    height: 100px;
+    width: 25%;
+}
+
+#rightbox {
+    float: right;
+    height: 100px;
+    width: 25%
+}
+
+h1 {
+    color: green;
+    text-align: center;
 }

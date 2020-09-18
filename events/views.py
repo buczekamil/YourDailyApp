@@ -1,9 +1,6 @@
 import calendar
 from datetime import date, timedelta
-
-from bootstrap_modal_forms.generic import BSModalDeleteView, BSModalUpdateView, BSModalCreateView
 from django.shortcuts import redirect
-from django.urls import reverse_lazy
 from django.views import generic
 from django.utils.safestring import mark_safe
 
