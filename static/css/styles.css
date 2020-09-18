@@ -10812,7 +10812,7 @@ form .row:first-child .floating-label-form-group {
 }
 
 .calendar {
-  width: 100%;
+  width: 90%;
   margin: auto;
   font-size: 13px;
 }
@@ -10844,8 +10844,19 @@ form .row:first-child .floating-label-form-group {
 ul {
   height: 80%;
   padding: 0px 5px 0px 20px;
+    font-size: 18px;
+    color: black;
 }
 
 a {
   color: #17a2b8;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+
 }

@@ -2,6 +2,8 @@ from bootstrap_modal_forms.generic import BSModalUpdateView, BSModalCreateView, 
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import View
+
+from events.models import Event
 from to_do_list.forms import ToDoForm, TaskModelForm
 from to_do_list.models import Task
 
@@ -19,8 +21,8 @@ class ToDoView(View):
             deadline = form.cleaned_data['to_date']
             time = form.cleaned_data['time']
             task = Task.objects.create(name=name, to_date=deadline, time=time)
-            return redirect('/')
-
+            event = Event.objects.create(title=name, description=name, start_time=deadline, end_time=deadline)
+            return redirect('todo')
 
 class TaskUpdateView(BSModalUpdateView):
     model = Task
