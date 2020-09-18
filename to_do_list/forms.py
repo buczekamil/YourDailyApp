@@ -14,14 +14,15 @@ class TimeInput(forms.TimeInput):
 class ToDoForm(forms.ModelForm):
     class Meta:
         model = Task
-        fields = "name", "to_date", "time"
+        fields = "name", "to_date", "time", "add_to_calendar"
         widgets = {'to_date': DateInput(),
                    'time': TimeInput(),
                    'name': forms.Textarea(attrs={'rows': 1, 'cols': 50})}
         labels = {
-            "name": "Task",
+            "name": "Description",
             "to_date": "Date",
-            "time": "Time"
+            "time": "Time",
+            'add_to_calendar': "Add to your calendar?"
         }
 
 
@@ -33,5 +34,5 @@ class TaskModelForm(BSModalModelForm):
             "name": "Task",
             "to_date": "Date",
             "time": "Time",
-            "if_done": "Done : "
+            "if_done": "Done : ",
         }

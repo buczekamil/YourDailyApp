@@ -16,13 +16,19 @@ class ToDoView(View):
 
     def post(self, request):
         form = ToDoForm(request.POST)
-        if form.is_valid():
+        if form.is_valid() and form.cleaned_data['add_to_calendar'] is False:
             name = form.cleaned_data['name']
             deadline = form.cleaned_data['to_date']
             time = form.cleaned_data['time']
-            task = Task.objects.create(name=name, to_date=deadline, time=time)
+            task = Task.objects.create(name=name, to_date=deadline, time=time, add_to_calendar=True)
+        else:
+            name = form.cleaned_data['name']
+            deadline = form.cleaned_data['to_date']
+            time = form.cleaned_data['time']
+            task = Task.objects.create(name=name, to_date=deadline, time=time, add_to_calendar=False)
             event = Event.objects.create(title=name, description=name, start_time=deadline, end_time=deadline)
-            return redirect('todo')
+        return redirect('todo')
+
 
 class TaskUpdateView(BSModalUpdateView):
     model = Task
@@ -37,5 +43,3 @@ class TaskDeleteView(BSModalDeleteView):
     template_name = 'delete_task.html'
     success_message = 'Success: Task was deleted.'
     success_url = reverse_lazy('todo')
-
-

@@ -17,14 +17,18 @@
         <div class="form-row">
 
 
-            <div class="form-group col-sm-3">
+            <div class="form-group col-sm-2">
                 {{ form.to_date|as_crispy_field }}
             </div>
              <div>
                 {{ form.time|as_crispy_field }}
             </div>
-            <div class="form-group col-sm-3" align="right">
+
+            <div class="form-group col-sm-3" >
                 {{ form.name|as_crispy_field }}
+            </div>
+              <div align="right">
+                {{ form.add_to_calendar|as_crispy_field }}
             </div>
         </div>
         <div align="left" >

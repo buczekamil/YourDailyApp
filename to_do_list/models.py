@@ -8,6 +8,7 @@ class Task(models.Model):
     time = models.TimeField()
     created_date = models.DateField(auto_now_add=True)
     modified_date = models.DateField(auto_now=True)
+    add_to_calendar = models.BooleanField()
 
     def __str__(self):
         return self.name
