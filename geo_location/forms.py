@@ -2,7 +2,6 @@ from django import forms
 
 
 class LocationForm(forms.Form):
-    street = forms.CharField()
-    city = forms.CharField()
-    country = forms.CharField()
-
+    street = forms.CharField(required=True)
+    city = forms.CharField(initial="Warsaw", required=True)
+    country = forms.CharField(initial="Poland", required=True)

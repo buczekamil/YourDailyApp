@@ -1,9 +1,46 @@
 {% extends 'base.html' %}
 {% block content %}
-    <form>
+    {% load static %}
+    <h3>Search for the restaurant</h3>
+    {{ text }}
+    <form method="post">
         {% csrf_token %}
-        {{ form }}
-        <button type="submit">Send</button>
+        {{ form.as_table }}
+        <button type="submit" class="btn btn-primary" style="margin-left: 2%; margin-bottom: 10px"> Find!</button>
     </form>
-    {{ loc }}
+    cords ({{ latitude }}, {{ longitude }})
+    <div>
+        <table id="tasks_table" class="table table-striped">
+            <thead>
+            <tr>
+                <th></th>
+                <th scope="col">Restaurant</th>
+                <th scope="col">Cuisine</th>
+                <th scope="col">Users rating</th>
+                <th scope="col">Avg. cost for two</th>
+                <th scope="col">Address</th>
+
+
+            </tr>
+            {% for i in zomato.nearby_restaurants %}
+                <tr>
+                    <td><img src="{{ i.restaurant.thumb }}"></td>
+                    <td>  {{ i.restaurant.name }}<br><br><a href='{{ i.restaurant.menu_url }}'
+                                                            style="color: lightgreen">Menu</a></td>
+                    <td>{{ i.restaurant.cuisines }}</td>
+                    <td>{{ i.restaurant.user_rating.rating_text }} ({{ i.restaurant.user_rating.aggregate_rating}})</td>
+                    <td>{{ i.restaurant.average_cost_for_two }}{{ i.restaurant.currency }}</td>
+                    <td>{{ i.restaurant.location.address }}</td>
+
+
+                </tr>
+
+
+
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+
 {% endblock %}
