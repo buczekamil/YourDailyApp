@@ -5,6 +5,8 @@ from to_do_list import views
 from news_aggregator import views as news
 from events import views as events
 from events import views as cal
+from geo_location import views as food
+
 
 
 urlpatterns = [
@@ -25,5 +27,7 @@ urlpatterns = [
     # path('calendar/create/', cal.EventAddView.as_view(), name='create_event'),
     # path('calendar/update/<int:pk>/', cal.EventUpdateView.as_view(), name='update_event'),
     # path('calendar/delete/<int:pk>', cal.EventDeleteView.as_view(), name='delete_event'),
+
+    path('food/', food.FindRestaurantView.as_view(), name = "food"),
 
 ]

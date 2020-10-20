@@ -1,19 +1,37 @@
+
 {% extends 'base.html' %}
+{% load static %}
+
 {% block content %}
-    <br>
-    <body style="background-color:#4682B4;">
-    <a class="btn btn-secondary" href="{% url 'uk_news' %}" role="button">United Kingdom</a>
-    <a class="btn btn-secondary" href="{% url 'usa_news' %}" role="button">USA</a>
-    <div class="btn-group" role="group">
-        <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">Poland</button>
-        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-            <a class="dropdown-item" href="{% url 'pl_news_business' %}">Business</a>
-            <a class="dropdown-item" href="{% url 'pl_news_sci' %}">Science</a>
-            <a class="dropdown-item" href="{% url 'pl_news_tech' %}">Technology</a>
+    <nav class="navbar navbar-expand-lg bg-secondary fixed-top" id="mainNav">
+ <div class="container"><a class="navbar-brand js-scroll-trigger" href="{% url 'home' %}"><img src='{% static 'assets/img/home.png'%}'></a>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+
         </div>
+                    <div class=" nav-item mx-0 mx-sm-1 btn-group" role="group">
+                        <a class="btn btn-primary" href="{% url 'uk_news' %}" role="button">United Kingdom</a>
+                        <a class="btn btn-primary" href="{% url 'usa_news' %}" role="button">USA</a>
+                        <div class="btn-group" role="group">
+                            <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle"
+                                    data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">Poland
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                <a class="dropdown-item" href="{% url 'pl_news_business' %}">Business</a>
+                                <a class="dropdown-item" href="{% url 'pl_news_sci' %}">Science</a>
+                                <a class="dropdown-item" href="{% url 'pl_news_tech' %}">Technology</a>
+                            </div>
+                        </div>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <br>
+    {#    <body style="background-color:#4682B4;">#}
+
     </div>
-<br>
+    <br>
     <br>
 
     <div class="row row-cols-1 row-cols-md-3">
@@ -22,11 +40,12 @@
                 <div class="card">
                     <a href="{{ news.url }}">
                         <img src="{{ news.urlToImage }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ news.title }}</h5>
-                       <p class="card-text">{{ news.description }}</p></a>
-                    </div>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ news.title }}</h5>
+                            <p class="card-text">{{ news.description }}</p>
+                    </a>
                 </div>
+            </div>
             </div>
         {% endfor %}
 
