@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.views.generic import TemplateView
 from to_do_list import views
 from news_aggregator import views as news
@@ -29,5 +29,6 @@ urlpatterns = [
     # path('calendar/delete/<int:pk>', cal.EventDeleteView.as_view(), name='delete_event'),
 
     path('food/', food.FindRestaurantView.as_view(), name = "food"),
-
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/', include('accounts.urls')),
 ]

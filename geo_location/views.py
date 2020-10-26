@@ -18,7 +18,6 @@ class FindRestaurantView(View):
     def post(self, request):
         form = LocationForm(request.POST)
         if form.is_valid():
-
             street = form.cleaned_data['street']
             city = form.cleaned_data['city']
             country = form.cleaned_data['country']

@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'news_aggregator',
     'events',
+    'accounts.apps.AccountsConfig',
 
 ]
 
@@ -132,4 +133,9 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),
                     )
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
+
 
