@@ -1,15 +1,15 @@
 import calendar
 from datetime import date, timedelta
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
 from django.views import generic
 from django.utils.safestring import mark_safe
-
 from .forms import EventModelForm
 from .models import *
 from .utils import Calendar
 
 
-class CalendarView(generic.ListView):
+class CalendarView(LoginRequiredMixin, generic.ListView):
     model = Event
     template_name = 'cal/calendar.html'
 
@@ -32,7 +32,8 @@ class CalendarView(generic.ListView):
             description = form.cleaned_data['description']
             start_time = form.cleaned_data['start_time']
             end_time = form.cleaned_data['end_time']
-            event = Event.objects.create(title=title, description=description, start_time=start_time, end_time=end_time)
+            event = Event.objects.create(title=title, description=description, start_time=start_time, end_time=end_time,
+                                         user=request.user)
             return redirect('calendar')
 
 
@@ -56,7 +57,6 @@ def get_date(req_day):
         year, month = (int(x) for x in req_day.split('-'))
         return date(year, month, day=1)
     return datetime.today()
-
 
 # class EventAddView(BSModalCreateView):
 # #     model = Event

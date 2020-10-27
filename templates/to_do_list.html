@@ -11,30 +11,32 @@
 
     <p></p>
 
-<div class="card">
-    <form method="post">
-        {% csrf_token %}
-        <div class="form-row">
+    <div class="card">
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-row">
 
 
-            <div class="form-group col-sm-2">
-                {{ form.to_date|as_crispy_field }}
-            </div>
-             <div>
-                {{ form.time|as_crispy_field }}
-            </div>
+                <div class="form-group col-sm-2">
+                    {{ form.to_date|as_crispy_field }}
+                </div>
+                <div>
+                    {{ form.time|as_crispy_field }}
+                </div>
 
-            <div class="form-group col-sm-3" >
-                {{ form.name|as_crispy_field }}
+                <div class="form-group col-sm-3">
+                    {{ form.name|as_crispy_field }}
+                </div>
+                <div align="right">
+                    {{ form.add_to_calendar|as_crispy_field }}
+                </div>
             </div>
-              <div align="right">
-                {{ form.add_to_calendar|as_crispy_field }}
+            <div align="left">
+                <button type="submit" class="btn btn-primary" style="margin-left: 2%; margin-bottom: 10px"> Add task
+                </button>
             </div>
-        </div>
-        <div align="left" >
-                <button type="submit"  class="btn btn-primary" style="margin-left: 2%; margin-bottom: 10px" > Add task</button></div>
-    </form>
-</div>
+        </form>
+    </div>
     <br>
     <div class="text-center">
     <h2 class="page-section-heading text-secondary" align="right"> ToDo list </h2>
@@ -64,9 +66,10 @@
                                 data-form-url="{% url 'update_task' task.id %}">
                             <span class="fa fa-pencil"></span>
                         </button>
-                        <button type="button" id="delete-task" class="bs-modal btn btn-sm btn-danger" data-form-url="{% url 'delete_task' task.id %}">
-                      <span class="fa fa-trash"></span>
-      </button>
+                        <button type="button" id="delete-task" class="bs-modal btn btn-sm btn-danger"
+                                data-form-url="{% url 'delete_task' task.id %}">
+                            <span class="fa fa-trash"></span>
+                        </button>
                     </td>
                 </tr>
             {% endfor %}

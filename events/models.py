@@ -10,4 +10,4 @@ class Event(models.Model):
     description = models.TextField()
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
-    user = models.ForeignKey(User, editable=False, null=True, blank=True, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, editable=False, null=True, on_delete=models.CASCADE)

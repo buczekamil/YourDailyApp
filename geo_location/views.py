@@ -1,15 +1,13 @@
-import json
-
 import requests
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.views import View
 from geopy import Nominatim
-
 import api
 from geo_location.forms import LocationForm
 
 
-class FindRestaurantView(View):
+class FindRestaurantView(LoginRequiredMixin, View):
 
     def get(self, request):
         form = LocationForm()
