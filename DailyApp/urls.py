@@ -25,10 +25,12 @@ urlpatterns = [
 
     path('calendar/', cal.CalendarView.as_view(), name='calendar'),
     # path('calendar/create/', cal.EventAddView.as_view(), name='create_event'),
-    # path('calendar/update/<int:pk>/', cal.EventUpdateView.as_view(), name='update_event'),
-    # path('calendar/delete/<int:pk>', cal.EventDeleteView.as_view(), name='delete_event'),
+    path('update/<int:pk>/', cal.EventUpdateView.as_view(), name='update_event'),
+    path('delete/<int:pk>', cal.EventDeleteView.as_view(), name='delete_event'),
 
     path('food/', food.FindRestaurantView.as_view(), name = "food"),
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/', include('accounts.urls')),
+
+    # path('event/<int:pk>', events.EventDetailsView.as_view(), name='event_details')
 ]

@@ -1,5 +1,4 @@
-from urllib import request
-
+from bootstrap_modal_forms.forms import BSModalModelForm
 from django.forms import ModelForm, DateInput
 from django import forms
 from events.models import Event
@@ -20,3 +19,14 @@ class EventModelForm(ModelForm):
         self.fields['start_time'].input_formats = ('%Y-%m-%dT%H:%M',)
         self.fields['end_time'].input_formats = ('%Y-%m-%dT%H:%M',)
 
+
+class BSEventModelForm(BSModalModelForm):
+    class Meta:
+        model = Event
+        fields = ['title', 'description', 'start_time', 'end_time']
+        # labels = {
+        #     "name": "Task",
+        #     "to_date": "Date",
+        #     "time": "Time",
+        #     "if_done": "Done : ",
+        # }

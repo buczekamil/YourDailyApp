@@ -79,5 +79,12 @@
       });
     });
 
+$(document).ready(function() {
+
+    $("#update-event").modalForm({
+        formURL: $(this).data('form-url')
+    });
+
+});
 
   });

@@ -1,10 +1,15 @@
 import calendar
 from datetime import date, timedelta
+
+from bootstrap_modal_forms.generic import BSModalUpdateView, BSModalDeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import redirect
-from django.views import generic
+from django.shortcuts import redirect, render
+from django.urls import reverse_lazy
+from django.views import generic, View
 from django.utils.safestring import mark_safe
-from .forms import EventModelForm
+from django.views.generic import UpdateView
+
+from .forms import EventModelForm, BSEventModelForm
 from .models import *
 from .utils import Calendar
 
@@ -19,7 +24,8 @@ class CalendarView(LoginRequiredMixin, generic.ListView):
         context['prev_month'] = prev_month(d)
         context['next_month'] = next_month(d)
         cal = Calendar(d.year, d.month)
-        html_cal = cal.formatmonth(withyear=True)
+        id = self.request.user
+        html_cal = cal.formatmonth(id, withyear=True)
         context['calendar'] = mark_safe(html_cal)
         form = EventModelForm
         context['form'] = form
@@ -58,6 +64,7 @@ def get_date(req_day):
         return date(year, month, day=1)
     return datetime.today()
 
+
 # class EventAddView(BSModalCreateView):
 # #     model = Event
 # #     template_name = 'cal/create_event.html'
@@ -65,17 +72,16 @@ def get_date(req_day):
 # #     success_message = 'Success: Event was created.'
 # #     success_url = reverse_lazy('calendar')
 
+class EventUpdateView(LoginRequiredMixin, BSModalUpdateView):
+    model = Event
+    template_name = 'cal/update_event.html'
+    form_class = BSEventModelForm
+    success_message = 'Success: Task was updated.'
+    success_url = reverse_lazy('calendar')
 
-# class EventUpdateView(BSModalUpdateView):
-#     model = Event
-#     template_name = 'update_task.html'
-#     form_class = EventModelForm
-#     success_message = 'Success: Event was updated.'
-#     success_url = reverse_lazy('calendar')
-#
-#
-# class EventDeleteView(BSModalDeleteView):
-#     model = Event
-#     template_name = 'delete_task.html'
-#     success_message = 'Success: Event was deleted.'
-#     success_url = reverse_lazy('calendar')
+
+class EventDeleteView(BSModalDeleteView):
+    model = Event
+    template_name = 'cal/delete_event.html'
+    success_message = 'Success: Event was deleted.'
+    success_url = reverse_lazy('calendar')
