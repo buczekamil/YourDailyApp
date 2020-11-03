@@ -2,11 +2,8 @@
 {% load crispy_forms_filters %}
 
 {% block content %}
+<article class = "page">
 
-    <div>
-
-        <div> {{ calendar }}
-        </div>
         <div class="clearfix">
             <a class="btn btn-info align-self-end left" href="{% url 'calendar' %}?{{ prev_month }}"> Previous
                 Month </a>
@@ -19,7 +16,8 @@
         </div>
     </div>
     <p>
-
+<div> {{ calendar }}
+        </div>
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -38,10 +36,7 @@
 
                             {{ form.title|as_crispy_field }}
                         </div>
-                        <div class="form-row">
-                            {{ form.start_time|as_crispy_field }}
-                        </div>
-                        <div class="form-row">
+                        <div class="form-row" >
                             {{ form.end_time|as_crispy_field }}
                         </div>
                         <div class="form-row">
@@ -58,5 +53,5 @@
                 </div>
             </div>
         </div>
-
+</article>
 {% endblock %}

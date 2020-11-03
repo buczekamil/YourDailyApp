@@ -1,15 +1,13 @@
 import calendar
-from datetime import date, timedelta
-
-from bootstrap_modal_forms.generic import BSModalUpdateView, BSModalDeleteView
+from datetime import date, timedelta, datetime
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
-from django.views import generic, View
+from django.views import generic
 from django.utils.safestring import mark_safe
-from django.views.generic import UpdateView
+from django.views.generic import UpdateView, DeleteView
 
-from .forms import EventModelForm, BSEventModelForm
+from .forms import EventModelForm
 from .models import *
 from .utils import Calendar
 
@@ -65,23 +63,14 @@ def get_date(req_day):
     return datetime.today()
 
 
-# class EventAddView(BSModalCreateView):
-# #     model = Event
-# #     template_name = 'cal/create_event.html'
-# #     form_class = EventModelForm
-# #     success_message = 'Success: Event was created.'
-# #     success_url = reverse_lazy('calendar')
-
-class EventUpdateView(LoginRequiredMixin, BSModalUpdateView):
+class EventUpdateView(LoginRequiredMixin, UpdateView):
     model = Event
+    form_class = EventModelForm
     template_name = 'cal/update_event.html'
-    form_class = BSEventModelForm
-    success_message = 'Success: Task was updated.'
     success_url = reverse_lazy('calendar')
 
 
-class EventDeleteView(BSModalDeleteView):
+class EventDeleteView(DeleteView):
     model = Event
     template_name = 'cal/delete_event.html'
-    success_message = 'Success: Event was deleted.'
     success_url = reverse_lazy('calendar')

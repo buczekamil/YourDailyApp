@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block content %}
+    <!-- Contact-->
+    <section class="module">
+    <section class="module">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 m-auto">
+                    <div class="module-title text-center">
+                        <h2>Let´s Talk</h2>
+                        <p class="font-serif">Please feel free to get in touch anytime.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 m-auto">
+                    <form method="post" action="{% url 'home' %}">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input class="form-control" type="text" name="name" placeholder="Name" required="">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input class="form-control" type="email" name="email" placeholder="E-mail"
+                                           required="">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input class="form-control" type="text" name="subject" placeholder="Subject"
+                                           required="">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <textarea class="form-control" name="message" placeholder="Message" rows="12"
+                                              required=""></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="text-center">
+                                    <input class="btn btn-circle btn-outline btn-xs btn-brand"  type="submit" value="Send Request">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+</section>
+{% endblock %}

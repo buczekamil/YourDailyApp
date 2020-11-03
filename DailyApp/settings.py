@@ -13,6 +13,8 @@ import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+from django.template.backends import django
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -137,5 +139,15 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+DEFAULT_FROM_EMAIL = 'himalaczyk@gmail.com'
+SERVER_EMAIL = 'himalaczyk@gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'himalaczyk@gmail.com'
+EMAIL_HOST_PASSWORD = '4558541597q'
 
 

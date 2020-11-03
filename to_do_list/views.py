@@ -1,5 +1,6 @@
 from bootstrap_modal_forms.generic import BSModalUpdateView, BSModalDeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import View
@@ -21,7 +22,7 @@ class ToDoView(LoginRequiredMixin, View):
             deadline = form.cleaned_data['to_date']
             time = form.cleaned_data['time']
             task = Task.objects.create(name=name, to_date=deadline, time=time, add_to_calendar=True, user=request.user)
-            event = Event.objects.create(title=name, description=name, start_time=deadline, end_time=deadline,
+            event = Event.objects.create(title=name, description=name, end_time=deadline,
                                          user=request.user)
         else:
             name = form.cleaned_data['name']
@@ -45,3 +46,22 @@ class TaskDeleteView(LoginRequiredMixin, BSModalDeleteView):
     template_name = 'delete_task.html'
     success_message = 'Success: Task was deleted.'
     success_url = reverse_lazy('todo')
+
+
+class ContactView(View):
+
+    def get(self, request):
+        return render(request, 'contact.html')
+
+    def post(self, request):
+        if request.method == 'POST':
+            name = request.POST['name']
+            mail = request.POST['email']
+            subject = request.POST['subject']
+            msg = request.POST['message']
+            message = f"{name} wants to talk!\n\nMessage:\n{msg} \n\nPersonal data:\nName: {name}\n E-mail address: " \
+                      f"{mail}"
+            # send_mail(subject, message, 'himalaczyk@gmail.com', ["himalaczyk@gmail.com"], fail_silently=False)
+            send_mail('Subject here', 'Here is the message.', "himalaczyk@gmail.com", ["himalaczyk@gmail.com"])
+
+            return render(request, 'contact.html')

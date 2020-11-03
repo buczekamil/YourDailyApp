@@ -170,3 +170,12 @@ https://github.com/trco/django-bootstrap-modal-forms
     };
 
 }(jQuery));
+
+// /// Modal forms
+//
+// $(function () {
+//     $(".bs-modal").each(function () {
+//         $(this).modalForm({formURL: $(this).data('form-url')
+//         });
+//     })
+// })
