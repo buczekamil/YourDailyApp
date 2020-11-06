@@ -1,22 +1,14 @@
-{% load widget_tweaks %}
+{% extends 'base.html' %}
+{% block content %}
+    <section class="module">
+        <div class="container">
+            <form method="post">{% csrf_token %}
+                <p>Are you sure you want to delete event -> "{{ object.name }}"?</p>
+                <input class="btn btn-round btn-outline btn-xs btn-dark" type="submit" value="Confirm">
+            </form>
+        </div>
+    </section>
+{% endblock %}
 
-<form method="post" action="">
-  {% csrf_token %}
 
-  <div class="modal-header">
-    <h3 class="modal-title">Delete Task</h3>
-    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
 
-  <div class="modal-body">
-    <p>Do you really want to delete this?
-      <strong>{{ task.title }}</strong>?</p>
-  </div>
-
-  <div class="modal-footer">
-    <button type="submit" class="btn btn-danger">Delete</button>
-  </div>
-
-</form>

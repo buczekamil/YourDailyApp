@@ -20,7 +20,7 @@ class Calendar(HTMLCalendar):
             d += f'<a href="/update_event/{event.title}/{event.pk}">{event.title}</a><br>'
 
         if day != 0:
-            return f"<td><span class='date'>{day}</span><ul> {d} </ul></td>"
+            return f"<td><strong><span class='date'>{day}</span><ul> {d} </ul></strong></td>"
         return '<td></td>'
 
 

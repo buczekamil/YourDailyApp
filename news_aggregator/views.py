@@ -1,7 +1,5 @@
 import json
 from datetime import date
-from urllib import request
-
 from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 from django.views import View

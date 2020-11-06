@@ -1,11 +1,9 @@
-from bootstrap_modal_forms.generic import BSModalUpdateView, BSModalDeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import View
-
-from DailyApp import settings
+from django.views.generic import UpdateView, DeleteView
 from events.models import Event
 from to_do_list.forms import ToDoForm, TaskModelForm
 from to_do_list.models import Task
@@ -35,15 +33,15 @@ class ToDoView(LoginRequiredMixin, View):
         return redirect('todo')
 
 
-class TaskUpdateView(LoginRequiredMixin, BSModalUpdateView):
+class TaskUpdateView(LoginRequiredMixin, UpdateView):
     model = Task
-    template_name = 'update_task.html'
     form_class = TaskModelForm
-    success_message = 'Success: Task was updated.'
+    template_name = 'update_task.html'
     success_url = reverse_lazy('todo')
 
 
-class TaskDeleteView(LoginRequiredMixin, BSModalDeleteView):
+
+class TaskDeleteView(LoginRequiredMixin, DeleteView):
     model = Task
     template_name = 'delete_task.html'
     success_message = 'Success: Task was deleted.'
@@ -64,4 +62,3 @@ class ContactView(View):
             message = f"{name} wants a contact!\n\nMessage:\n{text} \n\nPersonal data:\nName: {name}\nE-mail address: {mail}"
             send_mail(subject, message, 'umsiziapp@gmail.com', ["umsiziapp@gmail.com"], fail_silently=False)
             return redirect('home')
-

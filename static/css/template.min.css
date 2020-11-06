@@ -4389,12 +4389,13 @@ a[rel~=gallery]:hover {
 
 .calendar {
     width: 90%;
+    height: 30%
     margin: auto;
     font-size: 13px;
 }
 
 .calendar tr, .calendar td {
-    border: 1px solid black;
+    border: 1px solid white;
 }
 
 .calendar th {
@@ -4425,7 +4426,7 @@ ul {
 }
 
 a {
-    color: white;
+    color: deepskyblue;
 }
 
 

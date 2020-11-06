@@ -1,4 +1,3 @@
-from bootstrap_modal_forms.forms import BSModalModelForm
 from django import forms
 from .models import Task
 
@@ -26,13 +25,15 @@ class ToDoForm(forms.ModelForm):
         }
 
 
-class TaskModelForm(BSModalModelForm):
+class TaskModelForm(forms.ModelForm):
     class Meta:
         model = Task
         fields = ['name', 'to_date', 'time', 'if_done']
         labels = {
-            "name": "Task",
+            "name": "Name",
             "to_date": "Date",
             "time": "Time",
-            "if_done": "Done : ",
+            "if_done": "Is it done?",
         }
+
+

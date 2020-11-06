@@ -6,7 +6,6 @@ from django.urls import reverse_lazy
 from django.views import generic
 from django.utils.safestring import mark_safe
 from django.views.generic import UpdateView, DeleteView
-
 from .forms import EventModelForm
 from .models import *
 from .utils import Calendar
@@ -65,7 +64,6 @@ def get_date(req_day):
 class EventUpdateView(LoginRequiredMixin, UpdateView):
     model = Event
     form_class = EventModelForm
-    # fields = ['title', 'description', 'end_time']
     template_name = 'cal/update_event.html'
     success_url = reverse_lazy('calendar')
 

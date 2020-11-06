@@ -1,7 +1,5 @@
 from django.contrib import admin
 from django.urls import path, include
-from django.views.generic import TemplateView
-
 from to_do_list import views
 from news_aggregator import views as news
 from events import views as cal
@@ -16,7 +14,7 @@ urlpatterns = [
     path('contact_home/', news.home_page_mail_form, name='contact_home_page'),
 
     path('todo/', views.ToDoView.as_view(), name='todo'),
-    path('task/<int:pk>', views.TaskUpdateView.as_view(), name='update_task'),
+    path('task/<str:pk>', views.TaskUpdateView.as_view(), name='update_task'),
     path('delete/<int:pk>', views.TaskDeleteView.as_view(), name='delete_task'),
 
     path('news/uk/', news.NewsUK.as_view(), name="uk_news"),
@@ -31,7 +29,7 @@ urlpatterns = [
 
     path('food/', food.FindRestaurantView.as_view(), name = "food"),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('accounts/', include('accounts.urls')),
+    # path('accounts/', include('accounts.urls')),
 
     path('note/<int:pk>', news.update_note, name='update_note'),
 

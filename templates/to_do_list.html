@@ -1,91 +1,83 @@
 {% extends 'base.html' %}
+{% load static %}
 {% load crispy_forms_filters %}
+
 {% block content %}
-    <div class="modal fade" tabindex="-1" role="dialog" id="modal">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content"></div>
-        </div>
-    </div>
-    <!-- Modal 2 with id="modal" -->
-    <div class="modal fade" tabindex="-1" role="dialog" id="modal">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content"></div>
-        </div>
+    <div class="container" align="right">
+        <button class="btn btn-round btn-outline btn-xs btn-gray" type="button" data-toggle="modal"
+                data-target="#modal-1">Create task
+        </button>
     </div>
 
-    <p></p>
-    <section class="module">
-        <div class="container">
-            {# Form   #}
-            <form method="post">
-                {% csrf_token %}
+    {#    <div class="row">#}
+    {#        <div class="col-md-8 m-auto">#}
 
-                <div class="form-row">
-                    <div class="form-group col-sm-2">
-                        {{ form.to_date|as_crispy_field }}
-                    </div>
-                    <div>
-                        {{ form.time|as_crispy_field }}
-                    </div>
 
-                    <div class="form-group col-sm-3">
-                        {{ form.name|as_crispy_field }}
-                    </div>
-
-                    <div align="right">
-                        {{ form.add_to_calendar|as_crispy_field }}
-                    </div>
-
+    <div class="modal fade" id="modal-1" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Create task</h5>
+                    <button class="close " type="button" data-dismiss="modal" aria-label="Close">
+                        <span>×</span></button>
                 </div>
-                <div>
-                    <button type="submit" class="btn btn-round btn-xs btn-brand"
-                            style="margin-left: 2%; margin-bottom: 10px"> Add task
-                    </button>
-                </div>
+                <div class="modal-body">
+                    <form method="post">
+                        {% csrf_token %}
+
+                        <label class="col- col-form-label" for="example-date-input"
+                               placeholder="Name">Name: </label>
+                        <div class="col-3">
+                            <input class="form-control" type="text" name="name" value="">
+                        </div>
+
+                        <label class="col-2 col-form-label" for="example-date-input">Date: </label>
+                        <div class="col-3">
+                            <input class="form-control" type="date" name="to_date" value="">
+                        </div>
+                        <div class="col-3">
+                            <input class="form-control" type="time" name="time" value="">
+                        </div>
+{#                        <label class="custom-control-label" for="customCheck1">Add to your#}
+                            calendar?</label>
+                            <input type="checkbox" name="add_to_calendar" id="id_add_to_calendar">
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-round btn-brand" type="submit">Save</button>
+            </div>
             </form>
+
         </div>
-        {#    End form #}
+    </div>
+    </div>
 
+    <section>
+        <br><br>
 
-        <div class="text-center">
-            <h2 class="page-section-heading text-secondary" align="center"> ToDo list </h2>
+        <h1 style="color:white;" align="Center">To-do list</h1>
 
-            <div class="row justify-content-center">
-            </div>
-            <div >
-                <table id="tasks_table" class="table table-striped">
-                    <thead>
+        <div>
+            <table class="table table-bordered table-hovered " cellspacing='1'>
+                <tr>
+                    <th style="color: white">Task</th>
+                    <th style="color: white">Due date</th>
+                    <th style="color: white"></th>
+
+                </tr>
+                {% for task in tasks %}
                     <tr>
-                        <th scope="col">Task</th>
-                        <th scope="col">Deadline</th>
+                        <td style="color: white">{{ task.name }}</td>
+                        <td style="color: white">{{ task.to_date }}</td>
+                        <td>
+                            <a href="{% url 'update_task' task.pk %}">
+                                <button class="btn btn-round btn-outline btn-xs btn-gray"> Informations</button>
+                            </a>
+                        </td>
+
                     </tr>
-                    </thead>
-                    <tbody>
-                    {% for task in tasks %}
-                        <tr>
-                            <td>{{ task.name }}</td>
-                            <td>{{ task.to_date }}: {{ task.time }}</td>
-                            <td>
-                                <button type="button" id="update-task"
-                                        class="bs-modal btn btn-round btn-outline btn-xs btn-brand"
-                                        data-form-url="{% url 'update_task' task.id %}">
-                                    Update
-                                </button>
-                                <button type="button" id="delete-task"
-                                        class="bs-modal btn btn-round btn-outline btn-xs btn-dark"
-                                        data-form-url="{% url 'delete_task' task.id %}">
-                                    Delete
-                                </button>
-                            </td>
-                        </tr>
-
-                    {% endfor %}
-
-                    </tbody>
-                </table>
-            </div>
-
+                {% endfor %}
+            </table>
         </div>
     </section>
-
 {% endblock %}
