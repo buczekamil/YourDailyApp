@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'to_do_list',
     'crispy_forms',
-    'bootstrap_modal_forms',
     'widget_tweaks',
     'news_aggregator',
     'events',
