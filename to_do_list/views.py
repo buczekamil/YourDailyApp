@@ -4,6 +4,8 @@ from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import View
+
+from DailyApp import settings
 from events.models import Event
 from to_do_list.forms import ToDoForm, TaskModelForm
 from to_do_list.models import Task
@@ -55,13 +57,11 @@ class ContactView(View):
 
     def post(self, request):
         if request.method == 'POST':
-            name = request.POST['name']
-            mail = request.POST['email']
-            subject = request.POST['subject']
-            msg = request.POST['message']
-            message = f"{name} wants to talk!\n\nMessage:\n{msg} \n\nPersonal data:\nName: {name}\n E-mail address: " \
-                      f"{mail}"
-            # send_mail(subject, message, 'himalaczyk@gmail.com', ["himalaczyk@gmail.com"], fail_silently=False)
-            send_mail('Subject here', 'Here is the message.', "himalaczyk@gmail.com", ["himalaczyk@gmail.com"])
+            name = request.POST['lname']
+            mail = request.POST['lemail']
+            text = request.POST['lmessage']
+            subject = request.POST['lsubject']
+            message = f"{name} wants a contact!\n\nMessage:\n{text} \n\nPersonal data:\nName: {name}\nE-mail address: {mail}"
+            send_mail(subject, message, 'umsiziapp@gmail.com', ["umsiziapp@gmail.com"], fail_silently=False)
+            return redirect('home')
 
-            return render(request, 'contact.html')

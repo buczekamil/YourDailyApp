@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% load crispy_forms_filters %}
 {% block content %}
-<div class="modal fade" tabindex="-1" role="dialog" id="modal">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content"></div>
-  </div>
-</div>
+    <div class="modal fade" tabindex="-1" role="dialog" id="modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content"></div>
+        </div>
+    </div>
     <!-- Modal 2 with id="modal" -->
     <div class="modal fade" tabindex="-1" role="dialog" id="modal">
         <div class="modal-dialog" role="document">
@@ -19,6 +19,7 @@
             {# Form   #}
             <form method="post">
                 {% csrf_token %}
+
                 <div class="form-row">
                     <div class="form-group col-sm-2">
                         {{ form.to_date|as_crispy_field }}
@@ -34,10 +35,13 @@
                     <div align="right">
                         {{ form.add_to_calendar|as_crispy_field }}
                     </div>
-                     <button type="submit" class="btn btn-circle btn-xs btn-gray"  style="margin-left: 2%; margin-bottom: 10px"> Add task
+
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-round btn-xs btn-brand"
+                            style="margin-left: 2%; margin-bottom: 10px"> Add task
                     </button>
                 </div>
-
             </form>
         </div>
         {#    End form #}
@@ -48,7 +52,7 @@
 
             <div class="row justify-content-center">
             </div>
-            <div>
+            <div >
                 <table id="tasks_table" class="table table-striped">
                     <thead>
                     <tr>
@@ -62,11 +66,13 @@
                             <td>{{ task.name }}</td>
                             <td>{{ task.to_date }}: {{ task.time }}</td>
                             <td>
-                                <button type="button" id="update-task" class="bs-modal btn btn-round btn-outline btn-xs btn-brand"
+                                <button type="button" id="update-task"
+                                        class="bs-modal btn btn-round btn-outline btn-xs btn-brand"
                                         data-form-url="{% url 'update_task' task.id %}">
                                     Update
                                 </button>
-                                <button type="button" id="delete-task" class="bs-modal btn btn-round btn-outline btn-xs btn-dark"
+                                <button type="button" id="delete-task"
+                                        class="bs-modal btn btn-round btn-outline btn-xs btn-dark"
                                         data-form-url="{% url 'delete_task' task.id %}">
                                     Delete
                                 </button>

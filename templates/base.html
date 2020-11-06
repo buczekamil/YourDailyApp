@@ -33,8 +33,8 @@
         <div class="container-fluid">
             <!-- Logos-->
             <div class="inner-header"><a class="inner-brand" href="{% url 'home' %}"><img class="brand-dark"
-                                                                                    src="{% static 'images/logo.png' %}"
-                                                                                    width="77px" alt=""><img
+                                                                                          src="{% static 'images/logo.png' %}"
+                                                                                          width="77px" alt=""><img
                     class="brand-light" src="{% static 'images/logo-light.png' %}" width="77px" alt="">
                 <!-- Or simple text-->
                 <!-- Core--></a></div>
@@ -44,22 +44,28 @@
                     <div class="inner-nav">
                         <ul>
                             <!-- Home-->
-                            <li class="menu-item-has-children menu-item-has-mega-menu"><a href="{% url 'home' %}">Home</a></li>
+                            <li class="menu-item-has-children menu-item-has-mega-menu"><a
+                                    href="{% url 'home' %}">Home</a></li>
                             <!-- Home end-->
                             <!-- News-->
                             <li class="menu-item-has-children"><a href="#">News</a>
                                 <ul class="sub-menu">
                                     <li class="menu-item-has-children"><a href="#">Poland</a>
                                         <ul class="sub-menu">
-                                            <li><a href="{% url 'pl_news_business' %}">Business</a></li>
-                                            <li><a href="{% url 'pl_news_sci' %}">Science</a></li>
-                                            <li><a href="{% url 'pl_news_tech' %}">Technology</a></li>
-
+                                            <li style="background: white"><a href="{% url 'pl_news_business' %}">Business</a>
+                                            </li>
+                                            <li style="background: white"><a href="{% url 'pl_news_sci' %}">Science</a>
+                                            </li>
+                                            <li style="background: white"><a
+                                                    href="{% url 'pl_news_tech' %}">Technology</a></li>
                                         </ul>
                                     </li>
-                                    <li class="menu-item"><a href="{% url 'uk_news' %}">United Kingdom</a></li>
-                                    <li class="menu-item"><a href="{% url 'usa_news' %}">United States</a></li>
-
+                                    <li class="menu-item" style="background: white"><a href="{% url 'uk_news' %}">United
+                                        Kingdom</a>
+                                    </li>
+                                    <li class="menu-item" style="background: white"><a href="{% url 'usa_news' %}">United
+                                        States</a>
+                                    </li>
                                 </ul>
                             </li>
                             <!-- News end-->
@@ -72,121 +78,128 @@
                             <!-- Hungry-->
                             <li class="menu-item"><a href="{% url 'food' %}">Hungry?</a></li>
                             <!-- Hungry end-->
+                            <!-- Contact -->
+
+                            <li class="menu-item"><a href="{% url 'contact' %}">Contact</a></li>
+                            <!-- Contact end -->
                         </ul>
                     </div>
                 </div>
             </div>
             <!-- Extra menu-->
-                                    {% if user.is_authenticated %}
+            {% if user.is_authenticated %}
 
-            <div class="extra-nav">
-                <ul>
-                    <li><a class="open-offcanvas" href="#"><span>Menu</span><span class="fa fa-bars"></span></a></li>
-                </ul>
-            </div>
-            <!-- Mobile menu-->
-            <div class="nav-toggle"><a href="#" data-toggle="collapse" data-target=".inner-navigation"><span
-                    class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a></div>
-        </div>
-                                {% else %}
+                <div class="extra-nav">
+                    <ul>
+                        <li><a class="open-offcanvas" href="#"><span>Menu</span><span class="fa fa-bars"></span></a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Mobile menu-->
+                <div class="nav-toggle"><a href="#" data-toggle="collapse" data-target=".inner-navigation"><span
+                        class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a></div>
+                </div>
+            {% else %}
 
-          <div class="extra-nav">
+                <div class="extra-nav">
                 <ul>
                     <li><a href="{% url 'login' %}">Login</a></li>
                 </ul>
-                              {% endif %}
+            {% endif %}
 
             </div>
-            <!-- Mobile menu-->
-            <div class="nav-toggle"><a href="#" data-toggle="collapse" data-target=".inner-navigation"><span
-                    class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a></div>
-        </div>
+        <!-- Mobile menu-->
+        <div class="nav-toggle"><a href="#" data-toggle="collapse" data-target=".inner-navigation"><span
+                class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a></div>
+</div>
 
-    </header>
-    <!-- Header end-->
+</header>
+<!-- Header end-->
 <br><br><br>
 
 {% block content %}
-        {% endblock %}
+{% endblock %}
 
 <section class="module-header full-width parallax bg-dark bg-dark-60"
-                 data-background="{% static 'images/module-18.jpg'' %}">
+         data-background="{% static 'images/module-18.jpg'' %}">
         <!-- Footer Image-->
 
         </section>
         <!-- Footer Image end-->
 
         <!-- Footer-->
-        <footer class="footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 col-lg-3">
-                        <!-- Text widget-->
-                        <aside class="widget widget_text">
-                            <div class="textwidget">
-                                <p><img src="{% static 'images/logo-light.png' %}" width="100" alt=""></p>
-                                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis
-                                    egestas. Ut non enim eleifend felis pretium feugiat.</p>E-mail: <a
-                                    href="mailto:support@core.com">support@core.com</a> <br/>
-                                Phone: 8 800 123 4567 <br/>
-                                Fax: 8 800 123 4567 <br/>
-                            </div>
-                        </aside>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <!-- Recent entries widget-->
-                        <aside class="widget widget_recent_entries">
-                            <div class="widget-title">
-                                <h5>Recent Posts</h5>
-                            </div>
-                            <ul>
-                                <li><a href="#">Experience the sound of a modern and clean 360° Bluetooth Speaker.</a>
-                                    <span class="post-date">May 8, 2016</span></li>
-                                <li><a href="#">Experience the sound of a modern and clean 360° Bluetooth Speaker.</a>
-                                    <span class="post-date">April 7, 2016</span></li>
-                                <li><a href="#">Experience the sound of a modern and clean 360° Bluetooth Speaker.</a>
-                                    <span class="post-date">April 7, 2016</span></li>
-                            </ul>
-                        </aside>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <!-- Twitter widget-->
-                        <aside class="widget twitter-feed-widget">
-                            <div class="widget-title">
-                                <h5>Twitter Feed</h5>
-                            </div>
-                            <div class="twitter-feed" data-twitter="345170787868762112" data-number="1"></div>
-                        </aside>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <!-- Tags widget-->
-                        <aside class="widget widget_tag_cloud">
-                            <div class="widget-title">
-                                <h5>Tags</h5>
-                            </div>
-                            <div class="tagcloud"><a href="#">Design</a><a href="#">Travel</a><a href="#">Startup</a><a
-                                    href="#">Music</a><a href="#">Portfolio</a><a href="#">Responsive</a></div>
-                        </aside>
-                    </div>
+        <footer class=" footer
+">
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-lg-3">
+            <!-- Text widget-->
+            <aside class="widget widget_text">
+                <div class="textwidget">
+                    <p><img src="{% static 'images/logo-light.png' %}" width="100" alt=""></p>
+                    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis
+                        egestas. Ut non enim eleifend felis pretium feugiat.</p>E-mail: <a
+                        href="mailto:support@core.com">support@core.com</a> <br/>
+                    Phone: 8 800 123 4567 <br/>
+                    Fax: 8 800 123 4567 <br/>
                 </div>
-            </div>
-            <div class="footer-copyright">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="text-center"><span class="copyright">© 2017 Core, All Rights Reserved. Design with love by <a
-                                    href="http://2the.me/">2the.me</a></span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
+            </aside>
         </div>
-        <!-- Footer end-->
-
-        <a class="scroll-top" href="#top"><i class="fa fa-angle-up"></i></a>
+        <div class="col-md-6 col-lg-3">
+            <!-- Recent entries widget-->
+            <aside class="widget widget_recent_entries">
+                <div class="widget-title">
+                    <h5>Recent Posts</h5>
+                </div>
+                <ul>
+                    <li><a href="#">Experience the sound of a modern and clean 360° Bluetooth Speaker.</a>
+                        <span class="post-date">May 8, 2016</span></li>
+                    <li><a href="#">Experience the sound of a modern and clean 360° Bluetooth Speaker.</a>
+                        <span class="post-date">April 7, 2016</span></li>
+                    <li><a href="#">Experience the sound of a modern and clean 360° Bluetooth Speaker.</a>
+                        <span class="post-date">April 7, 2016</span></li>
+                </ul>
+            </aside>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <!-- Twitter widget-->
+            <aside class="widget twitter-feed-widget">
+                <div class="widget-title">
+                    <h5>Twitter Feed</h5>
+                </div>
+                <div class="twitter-feed" data-twitter="345170787868762112" data-number="1"></div>
+            </aside>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <!-- Tags widget-->
+            <aside class="widget widget_tag_cloud">
+                <div class="widget-title">
+                    <h5>Tags</h5>
+                </div>
+                <div class="tagcloud"><a href="#">Design</a><a href="#">Travel</a><a href="#">Startup</a><a
+                        href="#">Music</a><a href="#">Portfolio</a><a href="#">Responsive</a></div>
+            </aside>
+        </div>
     </div>
-    <!-- Wrapper end-->
+</div>
+<div class="footer-copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="text-center"><span
+                        class="copyright">© 2017 Core, All Rights Reserved. Design with love by <a
+                        href="http://2the.me/">2the.me</a></span></div>
+            </div>
+        </div>
+    </div>
+</div>
+</footer>
+</div>
+<!-- Footer end-->
+
+<a class="scroll-top" href="#top"><i class="fa fa-angle-up"></i></a>
+</div>
+<!-- Wrapper end-->
 
 </div>
 <!-- Layout end-->
@@ -204,29 +217,20 @@
                 </div>
             </aside>
             <!-- Text widget-->
-            <aside class="widget widget_text">
-                <div class="textwidget">
-                    <p class="text-center"><img src="{% static 'images/offcanvas.jpg' %}" alt=""></p>
-                </div>
-            </aside>
             <!-- Navmenu widget-->
             <aside class="widget widget_nav_menu">
                 <ul class="menu">
-                    <li class="menu-item menu-item-has-children"><a href="#">Home</a></li>
-                    <li class="menu-item"><a href="#">About Usss</a></li>
-                    <li class="menu-item"><a href="#">Services</a></li>
-                    <li class="menu-item"><a href="#">Portfolio</a></li>
-                    <li class="menu-item"><a href="#">Blog</a></li>
-                    <li class="menu-item"><a href="#">Shortcodes</a></li>
+                    <ul class="social-icons">
+                        <strong><h1>Umsizi</h1></strong><br>
+                        <h3>Your daily app.</h3>
+                    </ul>
+                    <br><br>
+                    <li class="menu-item" style="color: gold">Welcome: <br>
+                        <h3>{{ user.username }}</h3></li>
+                    <li class="menu-item"><a style="color:gold;" href="{% url 'logout' %}"> Logout </a></li>
                 </ul>
             </aside>
-            <ul class="social-icons">
-                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                <li><a href="#"><i class="fa fa-vk"></i></a></li>
-            </ul>
+
         </div>
     </div>
 </div>

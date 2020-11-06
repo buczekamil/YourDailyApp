@@ -1,0 +1,167 @@
+          <li class="menu-item-has-children"><a href="#">News</a>
+                                <ul class="sub-menu">
+                                    <li class="menu-item-has-children"><a href="#">Poland</a>
+                                        <ul class="sub-menu">
+                                            <li style="background: white"><a href="{% url 'pl_news_business' %}">Business</a>
+                                            </li>
+                                            <li style="background: white"><a href="{% url 'pl_news_sci' %}">Science</a>
+                                            </li>
+                                            <li style="background: white"><a
+                                                    href="{% url 'pl_news_tech' %}">Technology</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item" style="background: white"><a href="{% url 'uk_news' %}">United
+                                        Kingdom</a>
+                                    </li>
+                                    <li class="menu-item" style="background: white"><a href="{% url 'usa_news' %}">United
+                                        States</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+
+
+
+
+
+
+
+
+
+
+              <section class="module">
+        {#        <div class="container">#}
+        <div class="module-title text-center"><h2>Weather today</h2>
+        </div>
+        <div class="row">
+
+            <div class="col-md-3">
+                <div class="icon-box text-center">
+                    <div class=""><img src="http://openweathermap.org/img/w/{{ weather.icon }}.png"
+                                       alt="Image"></div>
+                    <div class="icon-box-title">
+                        <h6>{{ weather.city }}</h6>
+                    </div>
+                    <div class="icon-box-content">
+                        <p>{{ weather.temperature }}° C</p>
+                    </div>
+                    <div class="icon-box-link">{{ weather.description }}</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="icon-box text-center">
+                    <div class=""><img src="http://openweathermap.org/img/w/{{ weatherNY.icon }}.png"
+                                       alt="Image"></div>
+                    <div class="icon-box-title">
+                        <h6>{{ weatherNY.city }}</h6>
+                    </div>
+                    <div class="icon-box-content">
+                        <p>{{ weatherNY.temperature }}° C</p>
+                    </div>
+                    <div class="icon-box-link">{{ weatherNY.description }}</div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="icon-box text-center">
+                    <div class=""><img src="http://openweathermap.org/img/w/{{ weatherTY.icon }}.png"
+                                       alt="Image"></div>
+                    <div class="icon-box-title">
+                        <h6>{{ weatherTY.city }}</h6>
+                    </div>
+                    <div class="icon-box-content">
+                        <p>{{ weatherTY.temperature }}° C</p>
+                    </div>
+                    <div class="icon-box-link">{{ weatherTY.description }}</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="icon-box text-center">
+                    <div class=""><img src="http://openweathermap.org/img/w/{{ weatherRO.icon }}.png"
+                                       alt="Image"></div>
+                    <div class="icon-box-title">
+                        <h6>{{ weatherRO.city }}</h6>
+                    </div>
+                    <div class="icon-box-content">
+                        <p>{{ weatherRO.temperature }}° C</p>
+                    </div>
+                    <div class="icon-box-link">{{ weatherRO.description }}</div>
+                    {#                    </div>#}
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 m-auto ">
+                        <div class="special-heading m-b-40">
+                            <h4>Plans for today</h4>
+                        </div>
+                        <!-- Tabs-->
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item"><a class="nav-link" href="#tab-4" data-toggle="tab"><i
+                                    class="fa fa-anchor"></i> Tasks </a></li>
+                            <li class="nav-item"><a class="nav-link" href="#tab-5" data-toggle="tab"><i
+                                    class="fa fa-area-chart"></i> Events</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane show active" id="tab-4">
+                                {% for task in tasks %}<p>
+                                    <li>{{ task.name }}, <br>due date: {{ task.to_date }}</li>
+                                    </p>
+
+                                {% endfor %}
+
+                            </div>
+                            <div class="tab-pane" id="tab-5">
+                                {% for event in events %}<p>
+                                    <li>{{ event.title }}, date: {{ event.end_time }}<br>{{ event.description }}</li>
+                                    </p>
+
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+
+
+
+
+
+
+<!-- Notebooks end-->
+
+{#        <div class="row">#}
+{#            <div class="col-md-4">#}
+{#                <div class="m-t-30"></div>#}
+{#                <div class="icon-box icon-box-left">#}
+{#                    <div class="icon-box-icon"><span class="icon icon-basic-anchor"></span></div>#}
+{#                    <form id="note-form" method="post" action="{% url 'update_note' 5 %}">#}
+{#                                  {% csrf_token %}#}
+{#                        <textarea class=" form-control" name="note" rows="30" placeholder="">#}
+{#                    {{ note1.text }}#}
+{#                    </textarea>#}
+{#                    <input type="submit">#}
+{#                    </form>#}
+{#                </div>#}
+{##}
+{#            </div>#}
+{#            <div class="col-md-4 hidden-sm-down">#}
+{#                <div class="text-center"><img src="{% static 'images/iphone.png' %}" alt=""></div>#}
+{#            </div>#}
+{#            <div class="col-md-4">#}
+{#                <div class="m-t-30"></div>#}
+{#                <div class="icon-box icon-box-left">#}
+{#                    <div class="icon-box-icon"><span class="icon icon-basic-anchor"></span></div>#}
+{#                    <form method="post">#}
+{#                        {% csrf_token %}#}
+{#                        <textarea class="form-control" id="exampleTextarea" rows="30" placeholder="Note"></textarea>#}
+{#                    </form>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{#</section>#}
+<!-- Alt Services end-->

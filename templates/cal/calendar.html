@@ -5,15 +5,16 @@
 <article class = "page">
 
         <div class="clearfix">
-            <a class="btn btn-info align-self-end left" href="{% url 'calendar' %}?{{ prev_month }}"> Previous
+            <a class="btn btn-block btn-round btn-shadow btn-sm btn-white" href="{% url 'calendar' %}?{{ prev_month }}"> Previous
                 Month </a>
-            <div class=" nav-item mx-0 mx-lg-1 btn-group" role="group">
-                <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#exampleModal">
+              <div  align="right" >
+                <button type="button" class="btn btn-block btn-round btn-xs btn-dark"  data-toggle="modal" data-target="#exampleModal">
                     Add event
                 </button>
             </div>
-            <a class="btn btn-info  right" href="{% url 'calendar' %}?{{ next_month }}"> Next Month </a>
-        </div>
+            <a class="btn btn-block btn-round btn-shadow btn-sm btn-white" href="{% url 'calendar' %}?{{ next_month }}"> Next Month </a>
+        </div><br>
+
     </div>
     <p>
 <div> {{ calendar }}

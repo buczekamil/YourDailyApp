@@ -914,7 +914,8 @@ select.form-control-sm:not([size]):not([multiple]) {
     background-color: #fff;
     border-top: 0;
     padding: 20px 18px;
-    color: #999
+    color: #999;
+
 }
 
 .accordion .card {

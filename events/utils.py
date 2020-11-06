@@ -17,7 +17,7 @@ class Calendar(HTMLCalendar):
         d = ''
         for event in events_per_day:
 
-            d += f'<a href="/update/{event.title}/{event.pk}">{event.title}'
+            d += f'<a href="/update_event/{event.title}/{event.pk}">{event.title}</a><br>'
 
         if day != 0:
             return f"<td><span class='date'>{day}</span><ul> {d} </ul></td>"

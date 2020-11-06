@@ -1,10 +1,17 @@
 {% extends 'base.html' %}
 {% block content %}
-<form method="post">{% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Update"><button><a href="/delete/{{ event.title }}/{{ event.pk }}">Delete</a></button>
-</form>
+    <section class="module">
+        <div class="container" align="center">
+            <form method="post"">
+                {% csrf_token %}
+                Event: {{ event.title }}
+                {{ form.as_p }}
+                <input type="submit" class="btn btn-round btn-outline btn-xs btn-brand" value="Update">
+                <a class="btn btn-round btn-outline btn-xs btn-dark" href="/delete_event/{{ event.title }}/{{ event.pk }}">Delete</a></button>
+        </div>
 
+            </form>
+    </section>
 {% endblock %}
 
 

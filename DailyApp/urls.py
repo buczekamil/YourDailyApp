@@ -11,8 +11,9 @@ from geo_location import views as food
 
 urlpatterns = [
     path('aadminn/', admin.site.urls),
-    path('', news.index, name='home'),
+    path('', news.HomePage.as_view(), name='home'),
     path('contact/', views.ContactView.as_view(), name='contact'),
+    path('contact_home/', news.home_page_mail_form, name='contact_home_page'),
 
     path('todo/', views.ToDoView.as_view(), name='todo'),
     path('task/<int:pk>', views.TaskUpdateView.as_view(), name='update_task'),
@@ -25,11 +26,13 @@ urlpatterns = [
     path('news/pl/sci/', news.NewsPLSci.as_view(), name="pl_news_sci"),
 
     path('calendar/', cal.CalendarView.as_view(), name='calendar'),
-    path('update/<str:title>/<int:pk>', cal.EventUpdateView.as_view(), name='update_event'),
-    path('delete/<str:title>/<int:pk>', cal.EventDeleteView.as_view(), name='delete_event'),
+    path('update_event/<str:title>/<int:pk>', cal.EventUpdateView.as_view(), name='update_event'),
+    path('delete_event/<str:title>/<int:pk>', cal.EventDeleteView.as_view(), name='delete_event'),
 
     path('food/', food.FindRestaurantView.as_view(), name = "food"),
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/', include('accounts.urls')),
+
+    path('note/<int:pk>', news.update_note, name='update_note'),
 
 ]

@@ -6,10 +6,14 @@ from events.models import Event
 class EventModelForm(ModelForm):
     class Meta:
         model = Event
-        labels = {'end_time': "Due date"}
+        labels = {'end_time': "Due date"
+
+                  }
         widgets = {
             'end_time': DateInput(attrs={'type': 'datetime-local'}, format='%Y-%m-%dT%H:%M'),
             'description': forms.Textarea(attrs={'rows': 10, 'cols': 50}),
+            'title': forms.Textarea(attrs={'rows': 1, 'cols': 56}),
+
         }
         fields = '__all__'
 

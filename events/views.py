@@ -34,9 +34,8 @@ class CalendarView(LoginRequiredMixin, generic.ListView):
         if form.is_valid():
             title = form.cleaned_data['title']
             description = form.cleaned_data['description']
-            start_time = form.cleaned_data['start_time']
             end_time = form.cleaned_data['end_time']
-            event = Event.objects.create(title=title, description=description, start_time=start_time, end_time=end_time,
+            event = Event.objects.create(title=title, description=description, end_time=end_time,
                                          user=request.user)
             return redirect('calendar')
 
@@ -66,6 +65,7 @@ def get_date(req_day):
 class EventUpdateView(LoginRequiredMixin, UpdateView):
     model = Event
     form_class = EventModelForm
+    # fields = ['title', 'description', 'end_time']
     template_name = 'cal/update_event.html'
     success_url = reverse_lazy('calendar')
 

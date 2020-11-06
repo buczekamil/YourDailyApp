@@ -33,8 +33,8 @@
         <div class="container-fluid">
             <!-- Logos-->
             <div class="inner-header"><a class="inner-brand" href="{% url 'home' %}"><img class="brand-dark"
-                                                                                    src="{% static 'images/logo.png' %}"
-                                                                                    width="77px" alt=""><img
+                                                                                          src="{% static 'images/logo.png' %}"
+                                                                                          width="77px" alt=""><img
                     class="brand-light" src="{% static 'images/logo-light.png' %}" width="77px" alt="">
                 <!-- Or simple text-->
                 <!-- Core--></a></div>
@@ -44,25 +44,34 @@
                     <div class="inner-nav">
                         <ul>
                             <!-- Home-->
-                            <li class="menu-item-has-children menu-item-has-mega-menu"><a href="{% url 'home' %}">Home</a></li>
+                            <li class="menu-item"><a
+                                    href="{% url 'home' %}">Home</a></li>
                             <!-- Home end-->
                             <!-- News-->
+
+
                             <li class="menu-item-has-children"><a href="#">News</a>
                                 <ul class="sub-menu">
                                     <li class="menu-item-has-children"><a href="#">Poland</a>
                                         <ul class="sub-menu">
-                                            <li><a href="{% url 'pl_news_business' %}">Business</a></li>
-                                            <li><a href="{% url 'pl_news_sci' %}">Science</a></li>
-                                            <li><a href="{% url 'pl_news_tech' %}">Technology</a></li>
-
+                                            <li style="background: white"><a href="{% url 'pl_news_business' %}">Business</a>
+                                            </li>
+                                            <li style="background: white"><a href="{% url 'pl_news_sci' %}">Science</a>
+                                            </li>
+                                            <li style="background: white"><a
+                                                    href="{% url 'pl_news_tech' %}">Technology</a></li>
                                         </ul>
                                     </li>
-                                    <li class="menu-item"><a href="{% url 'uk_news' %}">United Kingdom</a></li>
-                                    <li class="menu-item"><a href="{% url 'usa_news' %}">United States</a></li>
-
+                                    <li class="menu-item" style="background: white"><a href="{% url 'uk_news' %}">United
+                                        Kingdom</a>
+                                    </li>
+                                    <li class="menu-item" style="background: white"><a href="{% url 'usa_news' %}">United
+                                        States</a>
+                                    </li>
                                 </ul>
                             </li>
                             <!-- News end-->
+
                             <!-- To-do-->
                             <li class="menu-item"><a href="{% url 'todo' %}">To-do</a></li>
                             <!-- To-do end-->
@@ -72,328 +81,276 @@
                             <!-- Hungry-->
                             <li class="menu-item"><a href="{% url 'food' %}">Hungry?</a></li>
                             <!-- Hungry end-->
-                                                        <!-- Contact -->
+                            <!-- Contact -->
 
-                                                        <li class="menu-item"><a href="{% url 'contact' %}">Contact</a></li>
-                                                        <!-- Contact end -->
+                            <li class="menu-item"><a href="{% url 'contact' %}">Contact</a></li>
+                            <!-- Contact end -->
+                            {% if user.is_authenticated %}
+                            {% else %}
+                                <li class="menu-item"><a href="{% url 'login' %}">Login</a></li>
+                            {% endif %}
 
                         </ul>
                     </div>
                 </div>
             </div>
             <!-- Extra menu-->
-                                    {% if user.is_authenticated %}
 
             <div class="extra-nav">
                 <ul>
-                    <li><a class="open-offcanvas" href="#"><span>Menu</span><span class="fa fa-bars"></span></a></li>
+                    <li><a class="open-offcanvas" href="#"><span>Menu</span><span class="fa fa-bars"></span></a>
+                    </li>
                 </ul>
             </div>
             <!-- Mobile menu-->
             <div class="nav-toggle"><a href="#" data-toggle="collapse" data-target=".inner-navigation"><span
                     class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a></div>
         </div>
-                                {% else %}
 
-          <div class="extra-nav">
-                <ul>
-                    <li><a href="{% url 'login' %}">Login</a></li>
-                </ul>
-                              {% endif %}
+</div>
+<!-- Mobile menu-->
+<div class="nav-toggle"><a href="#" data-toggle="collapse" data-target=".inner-navigation"><span
+        class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a></div>
+</div>
 
-            </div>
-            <!-- Mobile menu-->
-            <div class="nav-toggle"><a href="#" data-toggle="collapse" data-target=".inner-navigation"><span
-                    class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a></div>
-        </div>
+</header>
+<!-- Header end-->
 
-    </header>
-    <!-- Header end-->
+<!-- Wrapper-->
+<div class="wrapper">
 
-    <!-- Wrapper-->
-    <div class="wrapper">
-
-        <!-- Page Header-->
-        <section class="module-header full-height parallax bg-dark bg-dark-60"
-                 data-background="{% static 'images/module-29.jpg' %}">
-            <div id="particles-js"></div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h1 class="h1">Umsizi</h1>
-                        <p class="m-b-40">Daily App</p>
-
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Page Header end-->
+    <!-- Page Header-->
+    <section class="module-header full-height parallax bg-dark bg-dark-60"
+             data-background="{% static 'images/module-29.jpg' %}">
+        <div id="particles-js"></div>
+        {#            <div class="container">#}
+        {#                <div class="row">#}
+        {#                    <div class="col-md-12">#}
+        {#                        <h1 class="h1">Umsizi</h1>#}
+        {#                        <p class="m-b-40">Daily App</p>#}
+        {##}
+        {#                    </div>#}
+        {#                </div>#}
+        {#            </div>#}
+    </section>
+    <!-- Page Header end-->
+    {% if user.is_authenticated %}
 
         <!-- Weather-->
         <section class="module">
+            {#        <div class="container">#}
             <div class="container">
- <div class="module-title text-center">
-                            <h2>Weather today</h2>
-                        </div>
                 <div class="row">
-                    <div class="col-md-3">
-                        <div class="icon-box text-center">
-                            <div class="icon-box-icon"><img src="http://openweathermap.org/img/w/{{ weather.icon }}.png" alt="Image"></div>
-                            <div class="icon-box-title">
-                                <h6>{{ weather.city }}</h6>
-                            </div>
-                            <div class="icon-box-content">
-                                <p>{{ weather.temperature }}° C</p>
-                            </div>
-                            <div class="icon-box-link">{{ weather.description }}</div>
+                    <div class="col-md-8 m-auto ">
+                        <div class="module-title text-center" align="left"><h2>Today is: </h2>
                         </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="icon-box text-center">
-                            <div class="icon-box-icon">                        <img src="http://openweathermap.org/img/w/{{ weatherNY.icon }}.png" alt="Image"></div>
-                            <div class="icon-box-title">
-                                <h6>{{ weatherNY.city }}</h6>
-                            </div>
-                            <div class="icon-box-content">
-                                <p>{{ weatherNY.temperature }}° C</p>
-                            </div>
-                            <div class="icon-box-link">{{ weatherNY.description }}</div>
+                        <div class="special-heading m-b-4" align="center">
+                            <h4>Planned for today</h4>
                         </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="icon-box text-center">
-                            <div class="icon-box-icon">                        <img src="http://openweathermap.org/img/w/{{ weatherTY.icon }}.png" alt="Image"></div>
-                            <div class="icon-box-title">
-                                <h6>{{ weatherTY.city }}<</h6>
+
+                        <!-- Tabs-->
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item"><a class="nav-link" href="#tab-4" data-toggle="tab"><i
+                                    class="fa fa-anchor"></i> Tasks </a></li>
+                            <li class="nav-item"><a class="nav-link" href="#tab-5" data-toggle="tab"><i
+                                    class="fa fa-area-chart"></i> Events</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane show active" id="tab-4">
+                                {% for task in tasks %}<p>
+                                    <li>{{ task.name }}, <br>due date: {{ task.to_date }}</li>
+                                    </p>
+
+                                {% endfor %}
+
                             </div>
-                            <div class="icon-box-content">
-                                <p>{{ weatherTY.temperature }}° C</p>
+                            <div class="tab-pane" id="tab-5">
+                                {% for event in events %}<p>
+                                    <li>{{ event.title }}, date: {{ event.end_time }}<br>{{ event.description }}</li>
+                                    </p>
+
+                                {% endfor %}
                             </div>
-                            <div class="icon-box-link">{{ weatherTY.description }}</div>
                         </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="icon-box text-center">
-                            <div class="icon-box-icon">                        <img src="http://openweathermap.org/img/w/{{ weatherRO.icon }}.png" alt="Image"></div>
-                            <div class="icon-box-title">
-                                <h6>{{ weatherRO.city }}</h6>
-                            </div>
-                            <div class="icon-box-content">
-                                <p>{{ weatherRO.temperature }}° C</p>
-                            </div>
-                            <div class="icon-box-link">{{ weatherRO.description }}</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="m-b-100"></div>
                     </div>
                 </div>
             </div>
-        </section>
+            <div class="row">
+
+                <div class="col-md-3">
+                    <div class="icon-box text-center">
+                        <div class=""><img src="http://openweathermap.org/img/w/{{ weather.icon }}.png"
+                                           alt="Image"></div>
+                        <div class="icon-box-title">
+                            <h6>{{ weather.city }}</h6>
+                        </div>
+                        <div class="icon-box-content">
+                            <p>{{ weather.temperature }}° C</p>
+                        </div>
+                        <div class="icon-box-link">{{ weather.description }}</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="icon-box text-center">
+                        <div class=""><img src="http://openweathermap.org/img/w/{{ weatherNY.icon }}.png"
+                                           alt="Image"></div>
+                        <div class="icon-box-title">
+                            <h6>{{ weatherNY.city }}</h6>
+                        </div>
+                        <div class="icon-box-content">
+                            <p>{{ weatherNY.temperature }}° C</p>
+                        </div>
+                        <div class="icon-box-link">{{ weatherNY.description }}</div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="icon-box text-center">
+                        <div class=""><img src="http://openweathermap.org/img/w/{{ weatherTY.icon }}.png"
+                                           alt="Image"></div>
+                        <div class="icon-box-title">
+                            <h6>{{ weatherTY.city }}</h6>
+                        </div>
+                        <div class="icon-box-content">
+                            <p>{{ weatherTY.temperature }}° C</p>
+                        </div>
+                        <div class="icon-box-link">{{ weatherTY.description }}</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="icon-box text-center">
+                        <div class=""><img src="http://openweathermap.org/img/w/{{ weatherRO.icon }}.png"
+                                           alt="Image"></div>
+                        <div class="icon-box-title">
+                            <h6>{{ weatherRO.city }}</h6>
+                        </div>
+                        <div class="icon-box-content">
+                            <p>{{ weatherRO.temperature }}° C</p>
+                        </div>
+                        <div class="icon-box-link">{{ weatherRO.description }}</div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        {#</section>#}
+        {#<div class="row">#}
+        {#    <div class="col-md-12">#}
+        {#        <div class="m-b-100"></div>#}
+        {#    </div>#}
+        {#</div>#}
+        {#</div>#}
+        {#</section>#}
         <!-- Services end-->
+        <!-- Moon-->
+        <section class="module-header full-width parallax bg-dark bg-dark-60"
+                 data-background="{% static 'images/module-18.jpg' %}">
+        </section>
 
-        <!-- Notebooks-->
-        <section class="module module-gray p-0">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12 text-center"><img class="bb" src="{% static 'images/notebooks.png' %}"
-                                                            alt=""></div>
+        <section class="module">
+            <div class="special-heading m-b-4" align="center">
+                <h4>Make notes</h4>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="m-t-30"></div>
+                    <div class="icon-box icon-box-left">
+                        <div class="icon-box-icon"><span class="icon icon-basic-globe"></span></div>
+                        <form id="note-form" method="post" action="{% url 'update_note' note1.pk %}">
+                            {% csrf_token %}
+                            <textarea class=" form-control" name="note" rows="20" placeholder="Make note here">
+                    {{ note1.text }}
+                    </textarea>
+                            <button type="submit" class="btn btn-circle btn-shadow btn-xs btn-white">Save</button>
+                        </form>
+                        <br><img src="{% static 'images/astronaut3.png' %}" alt=""></br>
+                    </div>
+
+                </div>
+                <div class="col-md-3 hidden-sm-down">
+                    <div class="text-center"><img src="{% static 'images/astronaut.png' %}" alt="">
+                        <form id="note-form" method="post" action="{% url 'update_note' note2.pk %}">
+                            {% csrf_token %}
+                            <textarea class=" form-control" name="note" rows="20" placeholder="Make note here">
+                    {{ note2.text }}
+                    </textarea>
+                            <button type="submit" class="btn btn-circle btn-shadow btn-xs btn-white">Save</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="m-t-30"></div>
+                    <div class="icon-box icon-box-left">
+                        <div class="icon-box-icon"><span class="icon icon-basic-paperplane"></span></div>
+                        <form id="note-form" method="post" action="{% url 'update_note' note3.pk %}">
+                            {% csrf_token %}
+                            <textarea class=" form-control" name="note" rows="20" placeholder="Make note here">
+                    {{ note3.text }}
+                    </textarea>
+                            <button type="submit" class="btn btn-circle btn-shadow btn-xs btn-white">Save</button>
+                        </form>
+                        <br><img src="{% static 'images/astronaut1.png' %}" alt="">
+                    </div>
                 </div>
             </div>
+
         </section>
-        <!-- Notebooks end-->
-
-
-
-        <!-- Services-->
-        <section class="module module-divider-bottom">
+        <section class="module-header full-width parallax bg-dark bg-dark-60"
+                 data-background="{% static 'images/space.png' %}">
+        </section>
+        <div id="callMe" class="form-1">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-4">
-                        <div class="icon-box icon-box-left">
-                            <div class="icon-box-icon"><span class="icon icon-basic-webpage-multiple"></span></div>
-                            <div class="icon-box-title">
-                                <h6>Excellent Designs</h6>
-                            </div>
-                            <div class="icon-box-content">
-                                <p>Especially do at he possession insensible sympathize boisterous it. Songs he on an
-                                    widen me event truth.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="icon-box icon-box-left">
-                            <div class="icon-box-icon"><span class="icon icon-basic-target"></span></div>
-                            <div class="icon-box-title">
-                                <h6>Fully Responsive</h6>
-                            </div>
-                            <div class="icon-box-content">
-                                <p>Especially do at he possession insensible sympathize boisterous it. Songs he on an
-                                    widen me event truth.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="icon-box icon-box-left">
-                            <div class="icon-box-icon"><span class="icon icon-basic-cards-diamonds"></span></div>
-                            <div class="icon-box-title">
-                                <h6>Unlimited Colors</h6>
-                            </div>
-                            <div class="icon-box-content">
-                                <p>Especially do at he possession insensible sympathize boisterous it. Songs he on an
-                                    widen me event truth.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="icon-box icon-box-left">
-                            <div class="icon-box-icon"><span class="icon icon-basic-anchor"></span></div>
-                            <div class="icon-box-title">
-                                <h6>User Friendly</h6>
-                            </div>
-                            <div class="icon-box-content">
-                                <p>Especially do at he possession insensible sympathize boisterous it. Songs he on an
-                                    widen me event truth.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="icon-box icon-box-left">
-                            <div class="icon-box-icon"><span class="icon icon-basic-spread-text"></span></div>
-                            <div class="icon-box-title">
-                                <h6>Google Web Fonts</h6>
-                            </div>
-                            <div class="icon-box-content">
-                                <p>Especially do at he possession insensible sympathize boisterous it. Songs he on an
-                                    widen me event truth.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="icon-box icon-box-left">
-                            <div class="icon-box-icon"><span class="icon icon-basic-picture-multiple"></span></div>
-                            <div class="icon-box-title">
-                                <h6>Free Updates</h6>
-                            </div>
-                            <div class="icon-box-content">
-                                <p>Especially do at he possession insensible sympathize boisterous it. Songs he on an
-                                    widen me event truth.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Services end-->
+                    <div class="col-lg-6">
+                        <div class="text-container">
+                            {#                                            <div class="section-title">Contact</div>#}
+                            <h2 class="white" style="color: white">Contact</h2>
+                            <p class="white">
 
+                                Welcome to Umsizi, we are glad that you have visited us. In case you would like to
+                                contact,
+                                write to us by filling out the form on the right.<br> Any feedback will appreciate.
 
+                        </div>
+                    </div> <!-- end of col -->
+                    <!-- Call Me Form -->
+                    <form method="post" class="form-inline" action="{% url 'contact_home_page' %}">
+                        {% csrf_token %}
+                        <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" name="name"
+                               placeholder="Name">
 
-        <!-- Alt Services-->
-        <section class="module module-divider-bottom">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8 m-auto">
-                        <div class="module-title text-center">
-                            <h2>Alt Services</h2>
-                            <p class="font-serif">We provide a complete list of best digital services.</p>
+                        <div class="input-group mb-2 mr-sm-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">@</div>
+                            </div>
+                            <input type="text" class="form-control" id="inlineFormInputGroupUsername2" name="mail"
+                                   placeholder="E-mail">
                         </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="m-t-30"></div>
-                        <div class="icon-box icon-box-left">
-                            <div class="icon-box-icon"><span class="icon icon-basic-webpage-multiple"></span></div>
-                            <div class="icon-box-title">
-                                <h6>Excellent Designs</h6>
-                            </div>
-                            <div class="icon-box-content">
-                                <p>Especially do at he possession insensible sympathize boisterous it. Songs he on an
-                                    widen me event truth.</p>
-                            </div>
-                        </div>
-                        <div class="icon-box icon-box-left">
-                            <div class="icon-box-icon"><span class="icon icon-basic-target"></span></div>
-                            <div class="icon-box-title">
-                                <h6>Fully Responsive</h6>
-                            </div>
-                            <div class="icon-box-content">
-                                <p>Especially do at he possession insensible sympathize boisterous it. Songs he on an
-                                    widen me event truth.</p>
-                            </div>
-                        </div>
-                        <div class="icon-box icon-box-left">
-                            <div class="icon-box-icon"><span class="icon icon-basic-cards-diamonds"></span></div>
-                            <div class="icon-box-title">
-                                <h6>Unlimited Colors</h6>
-                            </div>
-                            <div class="icon-box-content">
-                                <p>Especially do at he possession insensible sympathize boisterous it. Songs he on an
-                                    widen me event truth.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 hidden-sm-down">
-                        <div class="text-center"><img src="{% static 'images/iphone.png' %}" alt=""></div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="m-t-30"></div>
-                        <div class="icon-box icon-box-left">
-                            <div class="icon-box-icon"><span class="icon icon-basic-anchor"></span></div>
-                            <div class="icon-box-title">
-                                <h6>User Friendly</h6>
-                            </div>
-                            <div class="icon-box-content">
-                                <p>Especially do at he possession insensible sympathize boisterous it. Songs he on an
-                                    widen me event truth.</p>
-                            </div>
-                        </div>
-                        <div class="icon-box icon-box-left">
-                            <div class="icon-box-icon"><span class="icon icon-basic-spread-text"></span></div>
-                            <div class="icon-box-title">
-                                <h6>Google Web Fonts</h6>
-                            </div>
-                            <div class="icon-box-content">
-                                <p>Especially do at he possession insensible sympathize boisterous it. Songs he on an
-                                    widen me event truth.</p>
-                            </div>
-                        </div>
-                        <div class="icon-box icon-box-left">
-                            <div class="icon-box-icon"><span class="icon icon-basic-picture-multiple"></span></div>
-                            <div class="icon-box-title">
-                                <h6>Free Updates</h6>
-                            </div>
-                            <div class="icon-box-content">
-                                <p>Especially do at he possession insensible sympathize boisterous it. Songs he on an
-                                    widen me event truth.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                        <textarea class="form-control mb-2 mr-sm-2" style="width: 58%" id="inlineFormInputName2"
+                                  placeholder="Message" name="message"></textarea>
+                        <button type="submit" class="btn btn-circle btn-shadow btn-xs btn-white">Send</button>
+                    </form>
+                    <!-- end of call me form -->
+
+                    {#                </div> <!-- end of col -->#}
+                </div> <!-- end of row -->
+            </div> <!-- end of container -->
+        </div> <!-- end of form-1 -->
         </section>
         <!-- Alt Services end-->
 
-<section class="module-header full-width parallax bg-dark bg-dark-60"
-                 data-background="{% static 'images/module-18.jpg'' %}">
-        <!-- Footer Image-->
-{#        <section class="module module-gray full-width parallax bg-dark bg-dark-60" data-background="{% static 'images/module-18.jpg'' %}">#}
-{#            <div class="container-fluid">#}
-{#                <div class="row">#}
-{#                    <div class="col-md-12">#}
-{#                        <div><img src="{% static 'images/module-18.jpg' %}" alt=""></div>#}
-{#                    </div>#}
-{#                </div>#}
-{#            </div>#}
+        <section class="module-header full-width parallax bg-dark bg-dark-60"
+                 data-background="{% static 'images/space.png' %}">
         </section>
+
+
+
         <!-- Footer Image end-->
 
         <!-- Footer-->
-        <footer class="footer">
+        <footer class=" footer
+">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 col-lg-3">
@@ -450,7 +407,8 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="text-center"><span class="copyright">© 2017 Core, All Rights Reserved. Design with love by <a
+                            <div class="text-center"><span
+                                    class="copyright">© 2017 Core, All Rights Reserved. Design with love by <a
                                     href="http://2the.me/">2the.me</a></span></div>
                         </div>
                     </div>
@@ -460,51 +418,91 @@
         <!-- Footer end-->
 
         <a class="scroll-top" href="#top"><i class="fa fa-angle-up"></i></a>
-    </div>
-    <!-- Wrapper end-->
-
-</div>
-<!-- Layout end-->
-
-<!-- Off canvas-->
-<div class="off-canvas-sidebar">
-    <div class="off-canvas-sidebar-wrapper">
-        <div class="off-canvas-header"><a class="close-offcanvas" href="#"><span
-                class="arrows arrows-arrows-remove"></span></a></div>
-        <div class="off-canvas-content">
-            <!-- Text widget-->
-            <aside class="widget widget_text">
-                <div class="textwidget">
-                    <p class="text-center"><img src="{% static 'logo-light.png' %}" width="100" alt=""></p>
-                </div>
-            </aside>
-            <!-- Text widget-->
-            <aside class="widget widget_text">
-                <div class="textwidget">
-                    <p class="text-center"><img src="{% static 'images/offcanvas.jpg' %}" alt=""></p>
-                </div>
-            </aside>
-            <!-- Navmenu widget-->
-            <aside class="widget widget_nav_menu">
-                <ul class="menu">
-                    <li class="menu-item menu-item-has-children"><a href="#">Home</a></li>
-                    <li class="menu-item"><a href="#">About Usss</a></li>
-                    <li class="menu-item"><a href="#">Services</a></li>
-                    <li class="menu-item"><a href="#">Portfolio</a></li>
-                    <li class="menu-item"><a href="#">Blog</a></li>
-                    <li class="menu-item"><a href="#">Shortcodes</a></li>
-                </ul>
-            </aside>
-            <ul class="social-icons">
-                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                <li><a href="#"><i class="fa fa-vk"></i></a></li>
-            </ul>
         </div>
-    </div>
-</div>
+        <!-- Wrapper end-->
+
+        </div>
+        <!-- Layout end-->
+
+        <!-- Off canvas-->
+        <div class="off-canvas-sidebar">
+            <div class="off-canvas-sidebar-wrapper">
+                <div class="off-canvas-header"><a class="close-offcanvas" href="#"><span
+                        class="arrows arrows-arrows-remove"></span></a></div>
+                <div class="off-canvas-content">
+                    <!-- Text widget-->
+                    <aside class="widget widget_text">
+                        <div class="textwidget">
+                            <p class="text-center"><img src="{% static 'logo-light.png' %}" width="100" alt=""></p>
+                        </div>
+                    </aside>
+                    <!-- Text widget-->
+                    {#            <aside class="widget widget_text">#}
+                    {#                <div class="textwidget">#}
+                    {#                    <p class="text-center"><img src="{% static 'images/offcanvas.jpg' %}" alt=""></p>#}
+                    {#                </div>#}
+                    {#            </aside>#}
+                    <!-- Navmenu widget-->
+                    <aside class="widget widget_nav_menu">
+                        <ul class="menu">
+                            <ul class="social-icons">
+                                <strong><h1>Umsizi</h1></strong><br>
+                                <h3>Your daily app.</h3>
+                            </ul>
+                            <br><br>
+                            <li class="menu-item" style="color: gold">Welcome: <br>
+                                <h3>{{ user.username }}</h3></li>
+                            <li class="menu-item"><a style="color:gold;" href="{% url 'logout' %}"> Logout </a></li>
+                        </ul>
+                </div>
+            </div>
+        </div>
+
+
+    {% else %}
+        <div id="callMe" class="form-1">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="text-container">
+                            {#                                            <div class="section-title">Contact</div>#}
+                            <h2 class="white" style="color: white">Contact</h2>
+                            <p class="white">
+
+                                Welcome to Umsizi, we are glad that you have visited us. In case you would like to
+                                contact,
+                                write to us by filling out the form on the right.<br> Any feedback will appreciate.
+
+                        </div>
+                    </div> <!-- end of col -->
+                    <!-- Call Me Form -->
+                    <form method="post" class="form-inline" action="{% url 'contact_home_page' %}">
+                        {% csrf_token %}
+                        <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" name="name"
+                               placeholder="Name">
+
+                        <div class="input-group mb-2 mr-sm-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">@</div>
+                            </div>
+                            <input type="text" class="form-control" id="inlineFormInputGroupUsername2" name="mail"
+                                   placeholder="E-mail">
+                        </div>
+                        <textarea class="form-control mb-2 mr-sm-2" style="width: 58%" id="inlineFormInputName2"
+                                  placeholder="Message" name="message"></textarea>
+                        <button type="submit" class="btn btn-circle btn-shadow btn-xs btn-white">Send</button>
+                    </form>
+                    <!-- end of call me form -->
+
+                    {#                </div> <!-- end of col -->#}
+                </div> <!-- end of row -->
+            </div> <!-- end of container -->
+        </div> <!-- end of form-1 -->
+
+        <!-- Alt Services end-->
+
+
+    {% endif %}
 <!-- Off canvas end-->
 
 <!-- Scripts-->

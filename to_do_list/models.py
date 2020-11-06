@@ -12,6 +12,10 @@ class Task(models.Model):
     add_to_calendar = models.BooleanField()
     user = models.ForeignKey(User, editable=False, null=True, blank=True, on_delete=models.CASCADE)
 
-
     def __str__(self):
         return self.name
+
+
+class Note(models.Model):
+    text = models.CharField(max_length=520, null=True, blank=True)
+    user = models.ForeignKey(User, editable=False, null=True, blank=True, on_delete=models.CASCADE)

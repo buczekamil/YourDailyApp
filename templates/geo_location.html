@@ -1,14 +1,17 @@
 {% extends 'base.html' %}
 {% block content %}
     {% load static %}
-    <h3>Search for the restaurant</h3>
+    <section class="module">
+    <h3 align="center">Search for the restaurant</h3>
+    <h6 align="center">Here you can find restaurant near provided location.</h6><br>
     {{ text }}
+    <div class="container">
     <form method="post">
         {% csrf_token %}
         {{ form.as_table }}
-        <button type="submit" class="btn btn-primary" style="margin-left: 2%; margin-bottom: 10px"> Find!</button>
+        <div align="center">
+        <button type="submit" class="btn btn-round btn-xs btn-brand" style="margin-left: 2%; margin-bottom: 10px"> Find!</button></div>
     </form>
-    cords ({{ latitude }}, {{ longitude }})
     <div>
         <table id="tasks_table" class="table table-striped">
             <thead>
@@ -41,6 +44,7 @@
             </tbody>
         </table>
     </div>
-
+    </div>
+</section>
 
 {% endblock %}

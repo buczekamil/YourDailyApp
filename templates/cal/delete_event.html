@@ -1,9 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
-<form method="post">{% csrf_token %}
-    <p>Are you sure you want to delete event -> "{{ object.title }}"?</p>
-    <input type="submit" value="Confirm">
-</form>
+    <section class="module">
+        <div class="container">
+            <form method="post">{% csrf_token %}
+                <p>Are you sure you want to delete event -> "{{ object.title }}"?</p>
+                <input class="btn btn-round btn-outline btn-xs btn-dark" type="submit" value="Confirm">
+            </form>
+        </div>
+    </section>
 {% endblock %}
 
 
